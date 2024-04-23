@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b8d4sl0hlo4sb"]
 
-[ext_resource type="Shader" path="res://addons/audiologic/Example/highlight.gdshader" id="1_7tsn7"]
+[ext_resource type="Shader" path="res://addons/audiologic/Extras/highlight.gdshader" id="1_7tsn7"]
 
 [resource]
 render_priority = 0
