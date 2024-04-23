@@ -1,0 +1,121 @@
+[gd_scene load_steps=16 format=3 uid="uid://d5umob1iwvrp"]
+
+[ext_resource type="Script" path="res://addons/audiologic/Example/CharacterBody3D.gd" id="1_vte3x"]
+[ext_resource type="Material" uid="uid://dona54a6qvbuv" path="res://addons/audiologic/Example/Example World/Models/Textures/prototype_material.tres" id="1_wssjt"]
+[ext_resource type="PackedScene" uid="uid://bcql2rqk2su0f" path="res://addons/audiologic/AudioLogController/audio_log_detection.tscn" id="3_h0sgw"]
+[ext_resource type="Script" path="res://addons/audiologic/Example/AudioCollectable.gd" id="3_wk3h1"]
+[ext_resource type="Resource" uid="uid://b7pdvq5dfxsxf" path="res://addons/audiologic/Example/Example Audio/example_log_1.tres" id="5_oa3ko"]
+[ext_resource type="AudioStream" uid="uid://culk8unffi0ty" path="res://addons/audiologic/Example/Example Audio/You Never knew what you meant to me.ogg" id="6_upshw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_awstq"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_jvgth"]
+sky_material = SubResource("ProceduralSkyMaterial_awstq")
+
+[sub_resource type="Environment" id="Environment_a4rxn"]
+background_mode = 2
+sky = SubResource("Sky_jvgth")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2g8y"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2e3yy"]
+height = 0.11483
+radius = 0.206633
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vpv74"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.1
+
+[sub_resource type="Gradient" id="Gradient_po05a"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h3mke"]
+gradient = SubResource("Gradient_po05a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_666o5"]
+albedo_color = Color(0, 0, 0, 1)
+rim_tint = 0.0
+rim_texture = SubResource("GradientTexture1D_h3mke")
+
+[node name="ExampleWorld" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a4rxn")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(20, 5, 20)
+material = ExtResource("1_wssjt")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.46255, 0)
+operation = 2
+size = Vector3(19, 14.2289, 19)
+material = ExtResource("1_wssjt")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.57004, -2.40962)
+radius = 0.50509
+height = 2.09571
+sides = 16
+material = ExtResource("1_wssjt")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.614632, 0)
+script = ExtResource("1_vte3x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_g2g8y")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.545663, -0.204871)
+
+[node name="ObjectDetection" parent="CharacterBody3D/Camera3D" instance=ExtResource("3_h0sgw")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody3D"]
+
+[node name="HitMarker" type="ColorRect" parent="CharacterBody3D/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AudioCollectable" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.332429, -2.3685)
+collision_layer = 0
+mass = 0.1
+freeze_mode = 1
+script = ExtResource("3_wk3h1")
+_log = ExtResource("5_oa3ko")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AudioCollectable"]
+shape = SubResource("CylinderShape3D_2e3yy")
+
+[node name="disk" type="MeshInstance3D" parent="AudioCollectable"]
+mesh = SubResource("CylinderMesh_vpv74")
+surface_material_override/0 = SubResource("StandardMaterial3D_666o5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_upshw")
+autoplay = true
+bus = &"test"

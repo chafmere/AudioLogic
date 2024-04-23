@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BusEffectProfile" load_steps=6 format=3 uid="uid://bd8nkna8sd34g"]
+
+[ext_resource type="Script" path="res://addons/audiologic/BusEffectProfiles/bus_effect_profile.gd" id="1_it7ln"]
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_or5yt"]
+
+[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_mo6dv"]
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_jugm8"]
+drive = 0.2
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_65ftl"]
+ceiling_db = -15.0
+threshold_db = -25.0
+
+[resource]
+script = ExtResource("1_it7ln")
+bus_effects = Array[AudioEffect]([SubResource("AudioEffectSpectrumAnalyzer_or5yt"), SubResource("AudioEffectHighPassFilter_mo6dv"), SubResource("AudioEffectDistortion_jugm8"), SubResource("AudioEffectLimiter_65ftl")])

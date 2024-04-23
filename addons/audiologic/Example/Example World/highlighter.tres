@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b8d4sl0hlo4sb"]
+
+[ext_resource type="Shader" path="res://addons/audiologic/Example/highlight.gdshader" id="1_7tsn7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7tsn7")
+shader_parameter/shine_color = Color(1, 1, 1, 0.847059)
+shader_parameter/cycle_interval = 2.64
+shader_parameter/shine_speed = 1.0
+shader_parameter/shine_width = 30.798

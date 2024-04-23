@@ -1,0 +1,34 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bqb6e6kd2d61p"
+path="res://.godot/imported/blockSnowLevel.glb-4d6ba20c5f1daa81fc11df8acf49d8ce.scn"
+
+[deps]
+
+source_file="res://addons/audiologic/Example/Example World/Models/Kenney/blockSnowLevel.glb"
+dest_files=["res://.godot/imported/blockSnowLevel.glb-4d6ba20c5f1daa81fc11df8acf49d8ce.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={}
+gltf/naming_version=0
+gltf/embedded_image_handling=1

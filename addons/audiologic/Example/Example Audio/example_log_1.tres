@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AudioLog" load_steps=4 format=3 uid="uid://b7pdvq5dfxsxf"]
+
+[ext_resource type="AudioStream" uid="uid://kp0paqjnpire" path="res://addons/audiologic/Example/Example Audio/AudioLogTest1.ogg" id="1_1b540"]
+[ext_resource type="Script" path="res://addons/audiologic/Scripts/AudioLog.gd" id="2_i42ep"]
+[ext_resource type="Texture2D" uid="uid://ctto1u2d106nk" path="res://addons/audiologic/ProfilePictures/pixel_guy.png" id="2_mhsxf"]
+
+[resource]
+script = ExtResource("2_i42ep")
+log_name = "Example Audio Log"
+log_audio = ExtResource("1_1b540")
+log_portrait = ExtResource("2_mhsxf")
+speaker_name = "Chaff Games"
+log_text = "This is an example Auido Log. It will be added to the log collected dictionary and can be retreived from the singleton."

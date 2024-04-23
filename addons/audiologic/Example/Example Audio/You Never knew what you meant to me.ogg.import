@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://culk8unffi0ty"
+path="res://.godot/imported/You Never knew what you meant to me.ogg-a90f600c90bc1a174bc4559fc19edc3d.oggvorbisstr"
+
+[deps]
+
+source_file="res://addons/audiologic/Example/Example Audio/You Never knew what you meant to me.ogg"
+dest_files=["res://.godot/imported/You Never knew what you meant to me.ogg-a90f600c90bc1a174bc4559fc19edc3d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
