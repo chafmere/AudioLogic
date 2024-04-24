@@ -23,10 +23,17 @@ func add_interact_action() -> void:
 	ProjectSettings.set_setting('input/audiologic_interact', {'deadzone': 0.5 , 'events':[input_interact]})
 
 func create_audiolog_buses() -> void:
+	if AudioServer.get_bus_index("AudioLogic") == -1:
+		create_audio_logic_bus()
 	if AudioServer.get_bus_index("AudioLog") == -1:
 		create_audio_log_bus()
 	if AudioServer.get_bus_index("AudioLogBackground")  == -1:
 		create_audio_log_bg_bus()
+
+func create_audio_logic_bus() -> void:
+	var audio_log_bus : int = AudioServer.bus_count 
+	AudioServer.add_bus(audio_log_bus)
+	AudioServer.set_bus_name(audio_log_bus,"AudioLogic")
 
 func create_audio_log_bus() -> void:
 	var audio_log_bus : int = AudioServer.bus_count
@@ -35,8 +42,10 @@ func create_audio_log_bus() -> void:
 	var bus_effect_profile = load("res://addons/audiologic/BusEffectProfiles/bus_effects/high_pass_crunch.tres")
 	for b in bus_effect_profile.bus_effects:
 		AudioServer.add_bus_effect(audio_log_bus,b)
+	AudioServer.set_bus_send(audio_log_bus,"AudioLogic")
 
 func create_audio_log_bg_bus() -> void:
 	var audio_log_bus : int = AudioServer.bus_count
 	AudioServer.add_bus(audio_log_bus)
 	AudioServer.set_bus_name(audio_log_bus,"AudioLogBackground")
+	AudioServer.set_bus_send(audio_log_bus,"AudioLogic")

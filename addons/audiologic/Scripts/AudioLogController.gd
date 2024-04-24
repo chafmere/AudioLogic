@@ -11,15 +11,16 @@ const AUDIO_LOG_BUS_LAYOUT = preload("res://addons/audiologic/AudioLogController
 @onready var audio_nodes: Control = $AudioNodes
 @onready var log_collected_notifier: Control = $LogCollectedNotifier
 
+
 var logs_collected: Dictionary = {}
 var latest_log: String
+var using_in_game_player: bool = false
 
 signal new_log
 signal log_started(_log: AudioLog)
 signal log_ended
 
 func _ready() -> void:
-#	print(AUDIO_LOG_BUS_LAYOUT.get_bus("AudioLog"))
 	init_bus_layout()
 	audio_log_player.finished.connect(log_completed)
 	new_log.connect(log_collected_notifier.new_log_collected)
@@ -48,18 +49,28 @@ func init_bus_layout() -> void:
 	background_effect.set_bus("AudioLogBackground")
 	end_effect.set_bus("AudioLogBackground")
 
-func play_log(_log: AudioLog) -> void:
+func play_log_in_game(_log: AudioLog) -> void:
 	log_started.emit(_log)
+	using_in_game_player = true
 	insert_effect.play()
 	await  insert_effect.finished
 	audio_log_player.play()
 	background_effect.play()
-	
+
+func play_log_in_menu(_log: AudioLog) -> void:
+	insert_effect.play()
+	await  insert_effect.finished
+	audio_log_player.play()
+	background_effect.play()
+
 func log_completed() -> void:
-	log_ended.emit()
+	if using_in_game_player:
+		log_ended.emit()
+		using_in_game_player = false
+		
 	for s in audio_nodes.get_children():
 		s.stop()
 	end_effect.play()
 
 func _on_log_collected_notifier_play_log() -> void:
-	play_log(logs_collected[latest_log])
+	play_log_in_game(logs_collected[latest_log])

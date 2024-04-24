@@ -1,6 +1,8 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://bfeuisvh0yqed"]
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://bfeuisvh0yqed"]
 
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_slcd0"]
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_or5yt"]
 
 [sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_mo6dv"]
 
@@ -20,21 +22,29 @@ bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = -7.26851
 bus/1/send = &"Master"
-bus/2/name = &"AudioLog"
+bus/2/name = &"AudioLogic"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = -0.00162125
-bus/2/send = &"AudioLogBackground"
-bus/2/effect/0/effect = SubResource("AudioEffectHighPassFilter_mo6dv")
-bus/2/effect/0/enabled = true
-bus/2/effect/1/effect = SubResource("AudioEffectDistortion_jugm8")
-bus/2/effect/1/enabled = true
-bus/2/effect/2/effect = SubResource("AudioEffectLimiter_65ftl")
-bus/2/effect/2/enabled = true
-bus/3/name = &"AudioLogBackground"
+bus/2/volume_db = 0.0
+bus/2/send = &""
+bus/3/name = &"AudioLog"
 bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
-bus/3/send = &"AudioLogBackground"
+bus/3/send = &"AudioLogic"
+bus/3/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_or5yt")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectHighPassFilter_mo6dv")
+bus/3/effect/1/enabled = true
+bus/3/effect/2/effect = SubResource("AudioEffectDistortion_jugm8")
+bus/3/effect/2/enabled = true
+bus/3/effect/3/effect = SubResource("AudioEffectLimiter_65ftl")
+bus/3/effect/3/enabled = true
+bus/4/name = &"AudioLogBackground"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"AudioLogic"

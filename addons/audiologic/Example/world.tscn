@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://d5umob1iwvrp"]
+[gd_scene load_steps=12 format=3 uid="uid://d5umob1iwvrp"]
 
 [ext_resource type="Script" path="res://addons/audiologic/Example/CharacterBody3D.gd" id="1_vte3x"]
 [ext_resource type="Material" uid="uid://dona54a6qvbuv" path="res://addons/audiologic/Example/Example World/Models/Textures/prototype_material.tres" id="1_wssjt"]
 [ext_resource type="PackedScene" uid="uid://bcql2rqk2su0f" path="res://addons/audiologic/Extras/audio_log_detection.tscn" id="3_h0sgw"]
 [ext_resource type="PackedScene" uid="uid://d21p4ipjnu0jj" path="res://addons/audiologic/Extras/audio_collectable.tscn" id="4_fjluw"]
+[ext_resource type="Script" path="res://addons/audiologic/Scripts/pause_menu.gd" id="6_fdudr"]
 [ext_resource type="AudioStream" uid="uid://culk8unffi0ty" path="res://addons/audiologic/Example/Example Audio/You Never knew what you meant to me.ogg" id="6_upshw"]
+[ext_resource type="PackedScene" uid="uid://p7i1o7mg8ojk" path="res://addons/audiologic/Extras/example_menu.tscn" id="7_4v8op"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_awstq"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -86,3 +88,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.280935, -2.43891)
 stream = ExtResource("6_upshw")
 autoplay = true
 bus = &"test"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("6_fdudr")
+
+[node name="ExampleMenu" parent="CanvasLayer" instance=ExtResource("7_4v8op")]
+visible = false

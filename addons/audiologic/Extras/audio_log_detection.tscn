@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/audiologic/Example/ObjectDetection.gd" id="1_ej5kq"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_hufoa"]
-length = 1.5
+length = 2.0
 
 [node name="AudioLogDetection" type="Area3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
