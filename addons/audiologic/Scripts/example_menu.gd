@@ -1,10 +1,12 @@
 extends Control
 
-@onready var button_container: VBoxContainer = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AudioLogSelector/ButtonContainer
-@onready var subtitles: RichTextLabel = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Subtitles
-@onready var portrait: TextureRect = $MarginContainer/VBoxContainer/HBoxContainer/PortraitBox/Portrait
-@onready var speaker_name: Label = $MarginContainer/VBoxContainer/HBoxContainer/PortraitBox/SpeakerName
-@onready var wave_form: ColorRect = $MarginContainer/VBoxContainer/WaveBox/WaveForm
+@onready var button_container: VBoxContainer = %ButtonContainer
+@onready var subtitles: RichTextLabel = %Subtitles
+@onready var portrait: TextureRect = %Portrait
+@onready var speaker_name: Label = %SpeakerName
+@onready var wave_form: ColorRect = %WaveForm
+
+var current_theme = preload("res://addons/audiologic/themes/high_contrast.tres")
 
 var wave_progress: float = 0
 var spectrum_analyser: AudioEffectInstance
@@ -13,6 +15,12 @@ var buttons_array: Array[String]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	check_for_audio_logs()
+	apply_theme(current_theme)
+	
+func apply_theme(_theme: Theme) -> void:
+	for n in get_tree().get_nodes_in_group("ApplyTheme"):
+		n.theme = _theme
+		
 
 func check_for_audio_logs() -> void:
 	clear_log_data()
@@ -25,6 +33,7 @@ func check_for_audio_logs() -> void:
 			buttons_array.append(logs)
 			new_button.text = logs
 			new_button.pressed.connect(get_audio_log.bind(new_button.text))
+			new_button.theme = current_theme
 			button_container.add_child(new_button)
 
 func get_audio_log(log_name: String) -> void:

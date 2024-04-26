@@ -1,0 +1,84 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bvgy04f6861yd"]
+
+[ext_resource type="FontFile" uid="uid://uqg4bbsuwkyi" path="res://addons/audiologic/Fonts/uni-sans/ubuntu/ubuntu-font-family-0.80/Ubuntu-B.ttf" id="1_54vrm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8y7j"]
+bg_color = Color(0.615686, 0.615686, 0.615686, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lx0l"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 0.466667)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5c8r7"]
+bg_color = Color(0.282353, 0.282353, 0.282353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pt022"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2weu"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjpah"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0bdyk"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+
+[resource]
+default_font = ExtResource("1_54vrm")
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 0.501961)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/styles/disabled = SubResource("StyleBoxFlat_c8y7j")
+Button/styles/focus = SubResource("StyleBoxFlat_7lx0l")
+Button/styles/hover = SubResource("StyleBoxFlat_5c8r7")
+Button/styles/normal = SubResource("StyleBoxFlat_pt022")
+Button/styles/pressed = SubResource("StyleBoxFlat_g2weu")
+Panel/styles/panel = SubResource("StyleBoxFlat_mjpah")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_0bdyk")

@@ -11,7 +11,6 @@ const AUDIO_LOG_BUS_LAYOUT = preload("res://addons/audiologic/AudioLogController
 @onready var audio_nodes: Control = $AudioNodes
 @onready var log_collected_notifier: Control = $LogCollectedNotifier
 
-
 var logs_collected: Dictionary = {}
 var latest_log: String
 var using_in_game_player: bool = false

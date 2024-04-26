@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="BusEffectProfile" load_steps=5 format=3 uid="uid://b13deohkk5e26"]
+
+[ext_resource type="Script" path="res://addons/audiologic/BusEffectProfiles/bus_effect_profile.gd" id="1_gy6m6"]
+
+[sub_resource type="AudioEffectEQ10" id="AudioEffectEQ10_wbqim"]
+band_db/31_hz = -23.7
+band_db/62_hz = -10.8
+band_db/125_hz = -7.4
+band_db/250_hz = 0.9
+band_db/500_hz = 2.1
+band_db/1000_hz = -5.0
+band_db/2000_hz = -17.3
+band_db/4000_hz = -19.0
+band_db/8000_hz = -18.8
+band_db/16000_hz = -21.0
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_exr6o"]
+drive = 0.2
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_0f751"]
+threshold = -5.8
+
+[resource]
+script = ExtResource("1_gy6m6")
+bus_effects = Array[AudioEffect]([SubResource("AudioEffectEQ10_wbqim"), SubResource("AudioEffectDistortion_exr6o"), SubResource("AudioEffectCompressor_0f751")])

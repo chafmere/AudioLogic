@@ -1,17 +1,38 @@
-[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://bfeuisvh0yqed"]
+[gd_resource type="AudioBusLayout" load_steps=7 format=3 uid="uid://bfeuisvh0yqed"]
 
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_slcd0"]
 
-[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_or5yt"]
+[sub_resource type="AudioEffectEQ10" id="AudioEffectEQ10_wbqim"]
+resource_name = "EQ10"
+band_db/31_hz = -23.7
+band_db/62_hz = -10.8
+band_db/125_hz = -7.4
+band_db/250_hz = 0.9
+band_db/500_hz = 2.1
+band_db/1000_hz = -5.0
+band_db/2000_hz = -17.3
+band_db/4000_hz = -19.0
+band_db/8000_hz = -18.8
+band_db/16000_hz = -21.0
 
-[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_mo6dv"]
-
-[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_jugm8"]
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_exr6o"]
+resource_name = "Distortion"
 drive = 0.2
 
-[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_65ftl"]
-ceiling_db = -15.0
-threshold_db = -25.0
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_0f751"]
+resource_name = "Compressor"
+threshold = -5.8
+
+[sub_resource type="AudioEffectBandPassFilter" id="AudioEffectBandPassFilter_fa1ox"]
+resource_name = "BandPassFilter"
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_n2lrh"]
+resource_name = "EQ"
+band_db/32_hz = -51.4
+band_db/100_hz = -29.3
+band_db/320_hz = -40.6
+band_db/3200_hz = -27.0
+band_db/10000_hz = -39.9
 
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_slcd0")
@@ -34,14 +55,16 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = &"AudioLogic"
-bus/3/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_or5yt")
+bus/3/effect/0/effect = SubResource("AudioEffectEQ10_wbqim")
 bus/3/effect/0/enabled = true
-bus/3/effect/1/effect = SubResource("AudioEffectHighPassFilter_mo6dv")
+bus/3/effect/1/effect = SubResource("AudioEffectDistortion_exr6o")
 bus/3/effect/1/enabled = true
-bus/3/effect/2/effect = SubResource("AudioEffectDistortion_jugm8")
+bus/3/effect/2/effect = SubResource("AudioEffectCompressor_0f751")
 bus/3/effect/2/enabled = true
-bus/3/effect/3/effect = SubResource("AudioEffectLimiter_65ftl")
+bus/3/effect/3/effect = SubResource("AudioEffectBandPassFilter_fa1ox")
 bus/3/effect/3/enabled = true
+bus/3/effect/4/effect = SubResource("AudioEffectEQ_n2lrh")
+bus/3/effect/4/enabled = true
 bus/4/name = &"AudioLogBackground"
 bus/4/solo = false
 bus/4/mute = false
