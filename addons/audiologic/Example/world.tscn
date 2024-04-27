@@ -1,15 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://d5umob1iwvrp"]
+[gd_scene load_steps=13 format=3 uid="uid://d5umob1iwvrp"]
 
 [ext_resource type="Script" path="res://addons/audiologic/Example/CharacterBody3D.gd" id="1_vte3x"]
 [ext_resource type="Material" uid="uid://dona54a6qvbuv" path="res://addons/audiologic/Example/Example World/Models/Textures/prototype_material.tres" id="1_wssjt"]
 [ext_resource type="PackedScene" uid="uid://bcql2rqk2su0f" path="res://addons/audiologic/Extras/audio_log_detection.tscn" id="3_h0sgw"]
 [ext_resource type="PackedScene" uid="uid://d21p4ipjnu0jj" path="res://addons/audiologic/Extras/audio_collectable.tscn" id="4_fjluw"]
-[ext_resource type="AudioStream" uid="uid://kp0paqjnpire" path="res://addons/audiologic/Example/Example Audio/AudioLogTest1.ogg" id="5_rt6ok"]
+[ext_resource type="Resource" uid="uid://b7pdvq5dfxsxf" path="res://addons/audiologic/Example/Example Audio/example_log_1.tres" id="5_yk8al"]
 [ext_resource type="Script" path="res://addons/audiologic/Scripts/pause_menu.gd" id="6_fdudr"]
 [ext_resource type="AudioStream" uid="uid://culk8unffi0ty" path="res://addons/audiologic/Example/Example Audio/You Never knew what you meant to me.ogg" id="6_upshw"]
-[ext_resource type="Texture2D" uid="uid://ctto1u2d106nk" path="res://addons/audiologic/ProfilePictures/pixel_guy.png" id="6_xoupw"]
 [ext_resource type="PackedScene" uid="uid://p7i1o7mg8ojk" path="res://addons/audiologic/Extras/example_menu.tscn" id="7_4v8op"]
-[ext_resource type="Script" path="res://addons/audiologic/Scripts/AudioLog.gd" id="7_8xrv6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_awstq"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -25,14 +23,6 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2g8y"]
-
-[sub_resource type="Resource" id="Resource_ttxvc"]
-script = ExtResource("7_8xrv6")
-log_name = "Example2"
-log_portrait = ExtResource("6_xoupw")
-speaker_name = "Some Person"
-log_text = "This is another example"
-log_audio = ExtResource("5_rt6ok")
 
 [node name="ExampleWorld" type="Node3D"]
 
@@ -97,7 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.280935, -2.43891)
 
 [node name="AudioCollectable2" parent="." instance=ExtResource("4_fjluw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.66646, -0.280935, -2.43891)
-_log = SubResource("Resource_ttxvc")
+_log = ExtResource("5_yk8al")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_upshw")

@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://d21p4ipjnu0jj"]
+[gd_scene load_steps=15 format=3 uid="uid://d21p4ipjnu0jj"]
 
 [ext_resource type="Script" path="res://addons/audiologic/Example/AudioCollectable.gd" id="1_hl07s"]
-[ext_resource type="Resource" uid="uid://b7pdvq5dfxsxf" path="res://addons/audiologic/Example/Example Audio/example_log_1.tres" id="2_1b3jr"]
 [ext_resource type="Texture2D" uid="uid://bonh656ymeoe2" path="res://addons/audiologic/Extras/radio/radio_radio_base_texture_BaseColor.png" id="3_5awwa"]
 [ext_resource type="Texture2D" uid="uid://5vcqy0tww64g" path="res://addons/audiologic/Extras/radio/radio_radio_base_texture_Metallic.png" id="4_abobt"]
 [ext_resource type="Texture2D" uid="uid://b5hcr6hf86pyw" path="res://addons/audiologic/Extras/radio/radio_radio_base_texture_Normal.png" id="5_047bp"]
@@ -109,7 +108,6 @@ collision_layer = 0
 mass = 0.1
 freeze_mode = 1
 script = ExtResource("1_hl07s")
-_log = ExtResource("2_1b3jr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00909424, -0.0208359, -0.00373077)

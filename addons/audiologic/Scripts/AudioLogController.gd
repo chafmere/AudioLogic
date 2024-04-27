@@ -2,6 +2,7 @@ extends Control
 class_name AudioLogManager
 
 const AUDIO_LOG_BUS_LAYOUT = preload("res://addons/audiologic/AudioLogController/audio_log_bus_layout.tres")
+const GLOBAL_AUDIOLOG_SOUNDS = preload("res://addons/audiologic/AudioLogController/global_audiolog_sounds.tres")
 
 @onready var audio_log_player: AudioStreamPlayer = $AudioNodes/AudioLogPlayer
 @onready var insert_effect: AudioStreamPlayer = $AudioNodes/InsertEffect
@@ -47,7 +48,12 @@ func init_bus_layout() -> void:
 	insert_effect.set_bus("AudioLogBackground")
 	background_effect.set_bus("AudioLogBackground")
 	end_effect.set_bus("AudioLogBackground")
-
+	
+	#set defualt sounds
+	insert_effect.stream = GLOBAL_AUDIOLOG_SOUNDS.insert_audio_stream
+	end_effect.stream = GLOBAL_AUDIOLOG_SOUNDS.end_audio_stream
+	background_effect.stream = GLOBAL_AUDIOLOG_SOUNDS.background_audio_stream
+	
 func play_log_in_game(_log: AudioLog) -> void:
 	allocate_log_sounds(_log)
 	log_started.emit(_log)
@@ -79,7 +85,18 @@ func _on_log_collected_notifier_play_log() -> void:
 func allocate_log_sounds(_log: AudioLog) -> void:
 	if _log.insert_audio:
 		insert_effect.stream  = _log.insert_audio
+	else:
+		insert_effect.stream = GLOBAL_AUDIOLOG_SOUNDS.insert_audio_stream
+		
+	if _log.end_audio:
+		end_effect.stream = _log.end_audio
+	else:
+		end_effect.stream = GLOBAL_AUDIOLOG_SOUNDS.end_audio_stream
+	
+	if _log.background_audio:
+		background_effect.stream = _log.background_audio
+	else:
+		background_effect.stream = GLOBAL_AUDIOLOG_SOUNDS.background_audio_stream
+	
 	if _log.log_audio:
 		audio_log_player.stream  = _log.log_audio
-	if _log.end_auido:
-		end_effect.stream = _log.end_auido

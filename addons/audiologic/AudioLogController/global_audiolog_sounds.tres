@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AudiologGlobalSounds" load_steps=6 format=3 uid="uid://bl3ebthatjgbm"]
+
+[ext_resource type="Script" path="res://addons/audiologic/Scripts/global_audiolog.gd" id="1_1m6d0"]
+[ext_resource type="AudioStream" uid="uid://72sr6lhqwn8c" path="res://addons/audiologic/AudioEffects/background/BackgroundCrackle.ogg" id="1_r4ed6"]
+[ext_resource type="Resource" uid="uid://bd8nkna8sd34g" path="res://addons/audiologic/BusEffectProfiles/bus_effects/high_pass_crunch.tres" id="2_n68sl"]
+[ext_resource type="AudioStream" uid="uid://p30ffdkmk17a" path="res://addons/audiologic/AudioEffects/end_effects/end_effect_02_vinyl.ogg" id="3_kh1fy"]
+[ext_resource type="AudioStream" uid="uid://c8dxfheyt1jxe" path="res://addons/audiologic/AudioEffects/insert_effects/insert_effect_02_vinyl.ogg" id="4_jaolg"]
+
+[resource]
+script = ExtResource("1_1m6d0")
+insert_audio_stream = ExtResource("4_jaolg")
+end_audio_stream = ExtResource("3_kh1fy")
+background_audio_stream = ExtResource("1_r4ed6")
+default_bus_effect_profile = ExtResource("2_n68sl")
