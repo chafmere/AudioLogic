@@ -29,10 +29,10 @@ glow_enabled = true
 [sub_resource type="Resource" id="Resource_ttxvc"]
 script = ExtResource("7_8xrv6")
 log_name = "Example2"
-log_audio = ExtResource("5_rt6ok")
 log_portrait = ExtResource("6_xoupw")
 speaker_name = "Some Person"
 log_text = "This is another example"
+log_audio = ExtResource("5_rt6ok")
 
 [node name="ExampleWorld" type="Node3D"]
 

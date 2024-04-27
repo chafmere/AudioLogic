@@ -49,6 +49,7 @@ func init_bus_layout() -> void:
 	end_effect.set_bus("AudioLogBackground")
 
 func play_log_in_game(_log: AudioLog) -> void:
+	allocate_log_sounds(_log)
 	log_started.emit(_log)
 	using_in_game_player = true
 	insert_effect.play()
@@ -57,6 +58,7 @@ func play_log_in_game(_log: AudioLog) -> void:
 	background_effect.play()
 
 func play_log_in_menu(_log: AudioLog) -> void:
+	allocate_log_sounds(_log)
 	insert_effect.play()
 	await  insert_effect.finished
 	audio_log_player.play()
@@ -73,3 +75,11 @@ func log_completed() -> void:
 
 func _on_log_collected_notifier_play_log() -> void:
 	play_log_in_game(logs_collected[latest_log])
+
+func allocate_log_sounds(_log: AudioLog) -> void:
+	if _log.insert_audio:
+		insert_effect.stream  = _log.insert_audio
+	if _log.log_audio:
+		audio_log_player.stream  = _log.log_audio
+	if _log.end_auido:
+		end_effect.stream = _log.end_auido

@@ -1,7 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://dhfrpx7t8sdla"]
+[gd_scene load_steps=27 format=3 uid="uid://dhfrpx7t8sdla"]
 
 [ext_resource type="Script" path="res://addons/audiologic/Scripts/AudioLogController.gd" id="1_y768v"]
-[ext_resource type="AudioStream" uid="uid://kp0paqjnpire" path="res://addons/audiologic/Example/Example Audio/AudioLogTest1.ogg" id="2_ugeq7"]
 [ext_resource type="AudioStream" uid="uid://bgqgyy13usoif" path="res://addons/audiologic/AudioEffects/insert_effects/Insert_Effect_01_Cassette.ogg" id="3_0dtqx"]
 [ext_resource type="AudioStream" uid="uid://72sr6lhqwn8c" path="res://addons/audiologic/AudioEffects/background/BackgroundCrackle.ogg" id="4_ir5qu"]
 [ext_resource type="AudioStream" uid="uid://doxhf6n66yt4x" path="res://addons/audiologic/AudioEffects/end_effects/End_Effect_01_Cassette.ogg" id="5_gwspe"]
@@ -255,7 +254,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="AudioLogPlayer" type="AudioStreamPlayer" parent="AudioNodes"]
-stream = ExtResource("2_ugeq7")
 bus = &"AudioLog"
 
 [node name="InsertEffect" type="AudioStreamPlayer" parent="AudioNodes"]

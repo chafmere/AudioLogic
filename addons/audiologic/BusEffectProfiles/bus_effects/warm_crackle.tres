@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://addons/audiologic/BusEffectProfiles/bus_effect_profile.gd" id="1_gy6m6"]
 
 [sub_resource type="AudioEffectEQ10" id="AudioEffectEQ10_wbqim"]
+resource_name = "EQ10"
 band_db/31_hz = -23.7
 band_db/62_hz = -10.8
 band_db/125_hz = -7.4
@@ -15,9 +16,11 @@ band_db/8000_hz = -18.8
 band_db/16000_hz = -21.0
 
 [sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_exr6o"]
+resource_name = "Distortion"
 drive = 0.2
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_0f751"]
+resource_name = "Compressor"
 threshold = -5.8
 
 [resource]

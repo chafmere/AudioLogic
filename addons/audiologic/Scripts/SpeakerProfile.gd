@@ -28,9 +28,7 @@ func hide_player() -> void:
 	animation_player.play("playing_end")
 
 func  _process(_delta: float) -> void:
-	
 	if spectrum_analyser:
 		var f: Vector2 = spectrum_analyser.get_magnitude_for_frequency_range(0,10000)
 		wave_progress = move_toward(wave_progress,clamp(f.x*100, .7,1),_delta*wave_speed)
 		wave.get_material().set_shader_parameter("progress",wave_progress)
-		print(wave_progress)

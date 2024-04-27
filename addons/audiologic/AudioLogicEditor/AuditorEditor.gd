@@ -14,12 +14,13 @@ var bus_effect_path: String = "res://addons/audiologic/BusEffectProfiles/bus_eff
 @onready var new_stack_effect_dialog: FileDialog = %NewStackEffectDialog
 @onready var audio_effect_selector: PopupMenu = %AudioEffectSelector
 @onready var effect_selector_right_click: PopupMenu = %EffectSelectorRightClick
+@onready var bus_effect_selector_right_click: PopupMenu = %BusEffectSelectorRightClick
 
 
 var active_bus_effect: BusEffectProfile
 var new_bus_effect: BusEffectProfile
 var item_index_to_remove: int
-
+var bus_index_to_delete: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -38,7 +39,7 @@ func _on_visibility_changed() -> void:
 
 func _on_effect_selector_item_activated(index: int) -> void:
 	var effect_to_load: String = effect_selector.get_item_text(index)
-	var bus_effect_profile = ResourceLoader.load(bus_effect_path+effect_to_load).duplicate(true)
+	var bus_effect_profile = ResourceLoader.load(bus_effect_path+effect_to_load)
 	active_bus_effect = bus_effect_profile
 	set_audio_log_effect(bus_effect_profile)
 	
@@ -108,6 +109,8 @@ func _on_audio_effect_selector_index_pressed(index: int) -> void:
 		var effect_to_load = audio_effect_selector.get_item_text(index)
 		var new_audio_effect = ClassDB.instantiate(effect_to_load)
 		active_bus_effect.bus_effects.append(new_audio_effect)
+		#var bus_effect_index = effect_selector.get_selected_items()
+		set_audio_log_effect(active_bus_effect)
 		display_effect_stack(active_bus_effect)
 	
 func _on_effect_stack_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
@@ -120,9 +123,24 @@ func _on_effect_stack_item_clicked(index: int, at_position: Vector2, mouse_butto
 		
 func _on_effect_selector_right_click_index_pressed(index: int) -> void:
 	active_bus_effect.bus_effects.remove_at(item_index_to_remove)
-	#var effect_to_remove = effect_selector_right_click.get_item_text(index)
-	#for e: AudioEffect in active_bus_effect.bus_effects:
-		#if e.get_class() == effect_to_remove:
-			#var item_index = active_bus_effect.bus_effects.find(e)
-			#active_bus_effect.bus_effects.remove_at(item_index)
+	_on_effect_selector_item_activated(index)
 	display_effect_stack(active_bus_effect)
+
+func _on_effect_selector_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+	if mouse_button_index == 2:
+		bus_index_to_delete = index
+		var mouse_pos = get_global_mouse_position()
+		bus_effect_selector_right_click.popup(Rect2i(mouse_pos,Vector2(122,62)))
+
+func _on_bus_effect_selector_right_click_index_pressed(index: int) -> void:
+	match index:
+		0:
+			_on_effect_selector_item_activated(bus_index_to_delete)
+		1:
+			on_delete_bus_effect(index)
+
+func on_delete_bus_effect(index: int):
+	var effect_to_delete: String = effect_selector.get_item_text(index)
+	if FileAccess.file_exists(bus_effect_path+effect_to_delete):
+		OS.move_to_trash(ProjectSettings.globalize_path(bus_effect_path+effect_to_delete))
+	load_bus_dir()

@@ -7,9 +7,7 @@ extends Control
 @onready var menu_editor: Control = %MenuEditor
 @onready var in_game_editor: Control = %InGameEditor
 @onready var audio_log_creator: Control = %AudioLogCreator
-@onready var editor: Panel = %Editor
-
-
+@onready var editor: Control = %Editor
 
 func  _ready() -> void:
 	for b: Button in buttons.get_children():

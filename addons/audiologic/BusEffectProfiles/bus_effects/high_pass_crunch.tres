@@ -7,7 +7,9 @@ resource_name = "HighPassFilter"
 
 [sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_j8nxj"]
 resource_name = "Distortion"
-drive = 0.3
+pre_gain = 34.33
+drive = 0.5
+post_gain = -37.73
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_65ftl"]
 resource_name = "Limiter"
