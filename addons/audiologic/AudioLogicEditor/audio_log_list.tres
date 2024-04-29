@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AudioLogList" load_steps=2 format=3 uid="uid://koo8n0ny48vj"]
+
+[ext_resource type="Script" path="res://addons/audiologic/AudioLogicEditor/audio_log_list.gd" id="1_npmci"]
+
+[resource]
+script = ExtResource("1_npmci")
+audio_log_list = {
+"AudioLog2.tres": "res://addons/audiologic/Example/Example Audio/AudioLog2.tres",
+"example_log_1.tres": "res://addons/audiologic/Example/Example Audio/example_log_1.tres"
+}

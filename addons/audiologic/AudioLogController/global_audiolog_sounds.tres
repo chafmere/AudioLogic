@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://addons/audiologic/Scripts/global_audiolog.gd" id="1_1m6d0"]
 [ext_resource type="AudioStream" uid="uid://72sr6lhqwn8c" path="res://addons/audiologic/AudioEffects/background/BackgroundCrackle.ogg" id="1_r4ed6"]
 [ext_resource type="Resource" uid="uid://bd8nkna8sd34g" path="res://addons/audiologic/BusEffectProfiles/bus_effects/high_pass_crunch.tres" id="2_n68sl"]
-[ext_resource type="AudioStream" uid="uid://p30ffdkmk17a" path="res://addons/audiologic/AudioEffects/end_effects/end_effect_02_vinyl.ogg" id="3_kh1fy"]
-[ext_resource type="AudioStream" uid="uid://c8dxfheyt1jxe" path="res://addons/audiologic/AudioEffects/insert_effects/insert_effect_02_vinyl.ogg" id="4_jaolg"]
+[ext_resource type="AudioStream" uid="uid://doxhf6n66yt4x" path="res://addons/audiologic/AudioEffects/end_effects/End_Effect_01_Cassette.ogg" id="3_acbyw"]
+[ext_resource type="AudioStream" uid="uid://bgqgyy13usoif" path="res://addons/audiologic/AudioEffects/insert_effects/Insert_Effect_01_Cassette.ogg" id="4_o70f2"]
 
 [resource]
 script = ExtResource("1_1m6d0")
-insert_audio_stream = ExtResource("4_jaolg")
-end_audio_stream = ExtResource("3_kh1fy")
+insert_audio_stream = ExtResource("4_o70f2")
+end_audio_stream = ExtResource("3_acbyw")
 background_audio_stream = ExtResource("1_r4ed6")
 default_bus_effect_profile = ExtResource("2_n68sl")

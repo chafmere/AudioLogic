@@ -6,7 +6,8 @@ var insert_sound_effect_path: String = "res://addons/audiologic/AudioEffects/ins
 var end_sound_effect_path: String = "res://addons/audiologic/AudioEffects/end_effects/"
 var background_sound_effect_path: String = "res://addons/audiologic/AudioEffects/background/"
 
-const GLOBAL_AUDIOLOG_SOUNDS = preload("res://addons/audiologic/AudioLogController/global_audiolog_sounds.tres")
+var gloabl_sounds_path: String = "res://addons/audiologic/AudioLogController/global_audiolog_sounds.tres"
+var GLOBAL_AUDIOLOG_SOUNDS: AudiologGlobalSounds
 
 @onready var effect_selector: ItemList = %EffectSelector
 @onready var effect_stack: ItemList = %EffectStack
@@ -42,12 +43,15 @@ const GLOBAL_AUDIOLOG_SOUNDS = preload("res://addons/audiologic/AudioLogControll
 var active_bus_effect: BusEffectProfile
 var new_bus_effect: BusEffectProfile
 var item_index_to_remove: int
-var bus_index_to_delete: int
+var bus_index_selected: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	pass
+	
+func assign_tracks() -> void:
 	insert_effect.stream = GLOBAL_AUDIOLOG_SOUNDS.insert_audio_stream
 	bg_sound.stream = GLOBAL_AUDIOLOG_SOUNDS.background_audio_stream
-	end_effect.stream = GLOBAL_AUDIOLOG_SOUNDS.insert_audio_stream
+	end_effect.stream = GLOBAL_AUDIOLOG_SOUNDS.end_audio_stream
 	active_bus_effect = GLOBAL_AUDIOLOG_SOUNDS.default_bus_effect_profile
 
 func load_bus_dir() -> void:
@@ -111,8 +115,8 @@ func load_sound_effect_pools() -> void:
 				continue
 			bus_effect_option_button.add_item(e, id)
 			if GLOBAL_AUDIOLOG_SOUNDS.default_bus_effect_profile.resource_path == (bus_effect_path+e):
-				var index = insert_effect_option_button.get_item_index(id)
-				end_effect_option_button.select(index)
+				var index = bus_effect_option_button.get_item_index(id)
+				bus_effect_option_button.select(index)
 				
 			id += 1
 
@@ -125,8 +129,19 @@ func clear_bus_dir() -> void:
 
 func _on_visibility_changed() -> void:
 	if visible:
+		load_globals(gloabl_sounds_path)
 		load_bus_dir()
 		load_sound_effect_pools()
+		assign_tracks()
+	else:
+		free_globals()
+
+func free_globals()  -> void:
+	GLOBAL_AUDIOLOG_SOUNDS = null
+
+func load_globals(path: String) -> void:
+	var globals = load(path)
+	GLOBAL_AUDIOLOG_SOUNDS = globals
 
 func _on_effect_selector_item_activated(index: int) -> void:
 	var effect_to_load: String = effect_selector.get_item_text(index)
@@ -175,11 +190,18 @@ func _on_load_track_file_dialog_file_selected(path: String) -> void:
 		preview_track_name.set_text(path.get_file())
 
 func _on_play_track_pressed() -> void:
+	load_log_to_player()
 	preview_player.bus = "AudioLog"
 	insert_effect.play()
 	await  insert_effect.finished
 	preview_player.play()
 	bg_sound.play()
+
+func load_log_to_player() -> void:
+	insert_effect.stream = GLOBAL_AUDIOLOG_SOUNDS.insert_audio_stream
+	end_effect.stream = GLOBAL_AUDIOLOG_SOUNDS.end_audio_stream
+	bg_sound.stream = GLOBAL_AUDIOLOG_SOUNDS.background_audio_stream
+	set_audio_log_effect(GLOBAL_AUDIOLOG_SOUNDS.default_bus_effect_profile)
 
 func _on_new_pressed() -> void:
 	new_bus_effect = BusEffectProfile.new()
@@ -191,7 +213,13 @@ func _on_new_stack_effect_dialog_file_selected(path: String) -> void:
 	load_bus_dir()
 
 func _on_stop_button_pressed() -> void:
+	stop_players()
+
+func stop_players() -> void:
 	preview_player.stop()
+	insert_effect.stop()
+	end_effect.stop()
+	bg_sound.stop()
 
 func _on_add_pressed() -> void:
 	audio_effect_selector.clear()
@@ -202,7 +230,6 @@ func _on_add_pressed() -> void:
 
 func _on_audio_effect_selector_index_pressed(index: int) -> void:
 	if active_bus_effect:
-		print(active_bus_effect.resource_path)
 		var effect_to_load = audio_effect_selector.get_item_text(index)
 		var new_audio_effect = ClassDB.instantiate(effect_to_load)
 		active_bus_effect.bus_effects.append(new_audio_effect)
@@ -220,7 +247,6 @@ func _on_effect_stack_item_clicked(index: int, at_position: Vector2, mouse_butto
 		
 func _on_effect_selector_right_click_index_pressed(index: int) -> void:
 	active_bus_effect.bus_effects.remove_at(item_index_to_remove)
-	#_on_effect_selector_item_activated(index)
 
 	if active_bus_effect == GLOBAL_AUDIOLOG_SOUNDS.default_bus_effect_profile:
 		set_audio_log_effect(active_bus_effect)
@@ -228,16 +254,23 @@ func _on_effect_selector_right_click_index_pressed(index: int) -> void:
 	
 func _on_effect_selector_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
 	if mouse_button_index == 2:
-		bus_index_to_delete = index
+		bus_index_selected = index
 		var mouse_pos = get_global_mouse_position()
 		bus_effect_selector_right_click.popup(Rect2i(mouse_pos,Vector2(122,62)))
 
 func _on_bus_effect_selector_right_click_index_pressed(index: int) -> void:
 	match index:
 		0:
-			_on_effect_selector_item_activated(bus_index_to_delete)
+			load_bus_effect_to_default(bus_index_selected)
 		1:
-			on_delete_bus_effect(index)
+			on_delete_bus_effect(bus_index_selected)
+
+func load_bus_effect_to_default(index: int) -> void:
+	var effect_to_load = effect_selector.get_item_text(index)
+	for i in bus_effect_option_button.item_count:
+		if bus_effect_option_button.get_item_text(i) == effect_to_load:
+			bus_effect_option_button.select(i)
+			_on_bus_effect_option_button_item_selected(i)
 
 func on_delete_bus_effect(index: int):
 	var effect_to_delete: String = effect_selector.get_item_text(index)
@@ -264,8 +297,9 @@ func _on_bg_play_button_pressed() -> void:
 		bg_sound.play()
 
 func _on_preview_player_finished() -> void:
-	bg_sound.stop()	
-	end_effect.play()
+	if visible:
+		bg_sound.stop()
+		end_effect.play()
 
 func _on_end_effect_finished() -> void:
 	pass

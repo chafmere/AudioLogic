@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BusEffectProfile" load_steps=5 format=3 uid="uid://bd8nkna8sd34g"]
+[gd_resource type="Resource" script_class="BusEffectProfile" load_steps=6 format=3 uid="uid://bd8nkna8sd34g"]
 
 [ext_resource type="Script" path="res://addons/audiologic/BusEffectProfiles/bus_effect_profile.gd" id="1_it7ln"]
 
@@ -16,6 +16,11 @@ resource_name = "Limiter"
 ceiling_db = -15.0
 threshold_db = -25.0
 
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_hn3wo"]
+resource_name = "Chorus"
+voice/1/delay_ms = 5.0
+voice/2/delay_ms = 6.0
+
 [resource]
 script = ExtResource("1_it7ln")
-bus_effects = Array[AudioEffect]([SubResource("AudioEffectHighPassFilter_mo6dv"), SubResource("AudioEffectDistortion_j8nxj"), SubResource("AudioEffectLimiter_65ftl")])
+bus_effects = Array[AudioEffect]([SubResource("AudioEffectHighPassFilter_mo6dv"), SubResource("AudioEffectDistortion_j8nxj"), SubResource("AudioEffectLimiter_65ftl"), SubResource("AudioEffectChorus_hn3wo")])

@@ -16,8 +16,10 @@ resource_name = "Limiter"
 ceiling_db = -15.0
 threshold_db = -25.0
 
-[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_rcf8j"]
-resource_name = "Reverb"
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_hn3wo"]
+resource_name = "Chorus"
+voice/1/delay_ms = 5.0
+voice/2/delay_ms = 6.0
 
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_slcd0")
@@ -46,7 +48,7 @@ bus/3/effect/1/effect = SubResource("AudioEffectDistortion_j8nxj")
 bus/3/effect/1/enabled = true
 bus/3/effect/2/effect = SubResource("AudioEffectLimiter_65ftl")
 bus/3/effect/2/enabled = true
-bus/3/effect/3/effect = SubResource("AudioEffectReverb_rcf8j")
+bus/3/effect/3/effect = SubResource("AudioEffectChorus_hn3wo")
 bus/3/effect/3/enabled = true
 bus/4/name = &"AudioLogBackground"
 bus/4/solo = false

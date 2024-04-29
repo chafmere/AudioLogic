@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AudioLog" load_steps=8 format=3 uid="uid://b2pyjcm1l5iln"]
+
+[ext_resource type="Script" path="res://addons/audiologic/Scripts/AudioLog.gd" id="1_cbcpx"]
+[ext_resource type="AudioStream" uid="uid://1rvfcwygiyjh" path="res://addons/audiologic/AudioEffects/background/background_crackle_02.ogg" id="1_yoy6a"]
+[ext_resource type="Resource" uid="uid://b13deohkk5e26" path="res://addons/audiologic/BusEffectProfiles/bus_effects/warm_crackle.tres" id="2_0h5ow"]
+[ext_resource type="AudioStream" uid="uid://p30ffdkmk17a" path="res://addons/audiologic/AudioEffects/end_effects/end_effect_02_vinyl.ogg" id="3_xgotc"]
+[ext_resource type="AudioStream" uid="uid://c8dxfheyt1jxe" path="res://addons/audiologic/AudioEffects/insert_effects/insert_effect_02_vinyl.ogg" id="4_hylkd"]
+[ext_resource type="AudioStream" uid="uid://kp0paqjnpire" path="res://addons/audiologic/Example/Example Audio/AudioLogTest1.ogg" id="4_xw05f"]
+[ext_resource type="Texture2D" uid="uid://ctto1u2d106nk" path="res://addons/audiologic/ProfilePictures/pixel_guy.png" id="5_vewxf"]
+
+[resource]
+script = ExtResource("1_cbcpx")
+log_name = "This is some text"
+log_audio = ExtResource("4_xw05f")
+log_portrait = ExtResource("5_vewxf")
+speaker_name = "Chaffy"
+log_text = "This is a test	2"
+insert_audio = ExtResource("4_hylkd")
+end_audio = ExtResource("3_xgotc")
+background_audio = ExtResource("1_yoy6a")
+bus_effect_profile = ExtResource("2_0h5ow")

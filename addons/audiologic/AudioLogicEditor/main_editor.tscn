@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://wo213npgovex"]
+[gd_scene load_steps=8 format=3 uid="uid://wo213npgovex"]
 
 [ext_resource type="Script" path="res://addons/audiologic/AudioLogicEditor/main_editor.gd" id="1_ald6r"]
-[ext_resource type="Script" path="res://addons/audiologic/AudioLogicEditor/AuditorEditor.gd" id="2_oxw66"]
+[ext_resource type="Script" path="res://addons/audiologic/AudioLogicEditor/AudioEditor.gd" id="2_ruqbs"]
 [ext_resource type="AudioStream" uid="uid://c8dxfheyt1jxe" path="res://addons/audiologic/AudioEffects/insert_effects/insert_effect_02_vinyl.ogg" id="3_6npkp"]
-[ext_resource type="AudioStream" uid="uid://1rvfcwygiyjh" path="res://addons/audiologic/AudioEffects/background/background_crackle_02.ogg" id="4_fnetb"]
+[ext_resource type="Script" path="res://addons/audiologic/AudioLogicEditor/AudioLogCreator.gd" id="3_fa3r4"]
+[ext_resource type="AudioStream" uid="uid://72sr6lhqwn8c" path="res://addons/audiologic/AudioEffects/background/BackgroundCrackle.ogg" id="4_e5pkh"]
+[ext_resource type="Texture2D" uid="uid://cfiidxupijtb8" path="res://addons/audiologic/ProfilePictures/PlaceHolder_size3_transparent.png" id="4_wyusm"]
+[ext_resource type="AudioStream" uid="uid://p30ffdkmk17a" path="res://addons/audiologic/AudioEffects/end_effects/end_effect_02_vinyl.ogg" id="5_r8rs2"]
 
 [node name="MainEditor" type="Control"]
 layout_mode = 3
@@ -23,58 +26,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-
-[node name="Buttons" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="AuditorEditorButton" type="Button" parent="MarginContainer/HBoxContainer/PanelContainer/Buttons"]
-layout_mode = 2
-text = "Audio Effects Editor"
-
-[node name="MenuEditorButton" type="Button" parent="MarginContainer/HBoxContainer/PanelContainer/Buttons"]
-visible = false
-layout_mode = 2
-text = "Menu Editor"
-
-[node name="InGameEditorButton" type="Button" parent="MarginContainer/HBoxContainer/PanelContainer/Buttons"]
-visible = false
-layout_mode = 2
-text = "In Game Editor"
-
-[node name="AudioLogCreatorButton" type="Button" parent="MarginContainer/HBoxContainer/PanelContainer/Buttons"]
-visible = false
-layout_mode = 2
-text = "Audio Log Creator"
-
-[node name="Editor" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="Editor" type="TabContainer" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+tab_alignment = 1
 
-[node name="AuditorEditor" type="Control" parent="MarginContainer/HBoxContainer/Editor"]
+[node name="AudioEditor" type="Control" parent="MarginContainer/Editor"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_oxw66")
+layout_mode = 2
+script = ExtResource("2_ruqbs")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Editor/AudioEditor"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,35 +46,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BussEffectEditor" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer"]
+[node name="BussEffectEditor" type="VBoxContainer" parent="MarginContainer/Editor/AudioEditor/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Options" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor"]
+[node name="Options" type="HBoxContainer" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor"]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor/Options"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor/Options"]
 layout_mode = 2
 
-[node name="New" type="Button" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor/Options/HBoxContainer2"]
+[node name="New" type="Button" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor/Options/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New Bus Effect Stack"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor/Options"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor/Options"]
 layout_mode = 2
 size_flags_horizontal = 10
 
-[node name="Add" type="Button" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor/Options/HBoxContainer"]
+[node name="Add" type="Button" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor/Options/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Add Effect"
 
-[node name="AudioSelectors" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor"]
+[node name="AudioSelectors" type="HBoxContainer" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="EffectSelector" type="ItemList" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor/AudioSelectors"]
+[node name="EffectSelector" type="ItemList" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor/AudioSelectors"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -119,26 +83,26 @@ item_count = 2
 item_0/text = "high_pass_crunch.tres"
 item_1/text = "warm_crackle.tres"
 
-[node name="EffectStack" type="ItemList" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor/AudioSelectors"]
+[node name="EffectStack" type="ItemList" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor/AudioSelectors"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AudioLogGlobals" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer"]
+[node name="AudioLogGlobals" type="VBoxContainer" parent="MarginContainer/Editor/AudioEditor/VBoxContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals"]
 layout_mode = 2
 size_flags_vertical = 3
 columns = 3
 
-[node name="InsertEffectButton" type="Label" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
+[node name="InsertEffectButton" type="Label" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Insert Effect Default:"
 horizontal_alignment = 2
 
-[node name="InsertEffectOptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
+[node name="InsertEffectOptionButton" type="OptionButton" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -149,18 +113,18 @@ popup/item_0/id = 0
 popup/item_1/text = "insert_effect_02_vinyl.ogg"
 popup/item_1/id = 1
 
-[node name="InsertPlayButton" type="Button" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
+[node name="InsertPlayButton" type="Button" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Play"
 
-[node name="endEffectButton" type="Label" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
+[node name="endEffectButton" type="Label" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "End Effect Default:"
 horizontal_alignment = 2
 
-[node name="EndEffectOptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
+[node name="EndEffectOptionButton" type="OptionButton" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -171,18 +135,18 @@ popup/item_0/id = 0
 popup/item_1/text = "end_effect_02_vinyl.ogg"
 popup/item_1/id = 1
 
-[node name="EndPlayButton" type="Button" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
+[node name="EndPlayButton" type="Button" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Play"
 
-[node name="BackgoundEffectButton" type="Label" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
+[node name="BackgoundEffectButton" type="Label" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Backgound Effect Default:"
 horizontal_alignment = 2
 
-[node name="BackgroundOptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
+[node name="BackgroundOptionButton" type="OptionButton" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -193,18 +157,18 @@ popup/item_0/id = 0
 popup/item_1/text = "background_crackle_02.ogg"
 popup/item_1/id = 1
 
-[node name="BGPlayButton" type="Button" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
+[node name="BGPlayButton" type="Button" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Play"
 
-[node name="DefultBusButton" type="Label" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
+[node name="DefultBusButton" type="Label" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Default Bus Effect:"
 horizontal_alignment = 2
 
-[node name="BusEffectOptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
+[node name="BusEffectOptionButton" type="OptionButton" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -215,52 +179,33 @@ popup/item_0/id = 0
 popup/item_1/text = "warm_crackle.tres"
 popup/item_1/id = 1
 
-[node name="Preview" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer"]
+[node name="Preview" type="HBoxContainer" parent="MarginContainer/Editor/AudioEditor/VBoxContainer"]
 layout_mode = 2
 
-[node name="StopButton" type="Button" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/Preview"]
+[node name="StopButton" type="Button" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/Preview"]
 layout_mode = 2
 text = "Stop"
 
-[node name="PlayTrack" type="Button" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/Preview"]
+[node name="PlayTrack" type="Button" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/Preview"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Play Preview"
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/Preview"]
+[node name="Label" type="Label" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/Preview"]
 layout_mode = 2
 text = "Preview Track: "
 
-[node name="PreviewTrackName" type="Label" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/Preview"]
+[node name="PreviewTrackName" type="Label" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/Preview"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "no track loaded"
 
-[node name="LoadTrack" type="Button" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/Preview"]
+[node name="LoadTrack" type="Button" parent="MarginContainer/Editor/AudioEditor/VBoxContainer/Preview"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Load Preview Track"
 
-[node name="InsertEffect" type="AudioStreamPlayer" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor"]
-unique_name_in_owner = true
-stream = ExtResource("3_6npkp")
-bus = &"AudioLogBackground"
-
-[node name="BgSound" type="AudioStreamPlayer" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor"]
-unique_name_in_owner = true
-stream = ExtResource("4_fnetb")
-bus = &"AudioLogBackground"
-
-[node name="EndEffect" type="AudioStreamPlayer" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor"]
-unique_name_in_owner = true
-stream = ExtResource("3_6npkp")
-bus = &"AudioLogBackground"
-
-[node name="PreviewPlayer" type="AudioStreamPlayer" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor"]
-unique_name_in_owner = true
-bus = &"AudioLogic"
-
-[node name="LoadTrackFileDialog" type="FileDialog" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor"]
+[node name="LoadTrackFileDialog" type="FileDialog" parent="MarginContainer/Editor/AudioEditor"]
 unique_name_in_owner = true
 title = "Open a File"
 initial_position = 4
@@ -269,16 +214,16 @@ ok_button_text = "Open"
 file_mode = 0
 root_subfolder = "res://addons/audiologic/Example/Example Audio/"
 
-[node name="NewStackEffectDialog" type="FileDialog" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor"]
+[node name="NewStackEffectDialog" type="FileDialog" parent="MarginContainer/Editor/AudioEditor"]
 unique_name_in_owner = true
 size = Vector2i(392, 159)
 root_subfolder = "res://addons/audiologic/BusEffectProfiles/bus_effects/"
 
-[node name="AudioEffectSelector" type="PopupMenu" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor"]
+[node name="AudioEffectSelector" type="PopupMenu" parent="MarginContainer/Editor/AudioEditor"]
 unique_name_in_owner = true
 initial_position = 4
 
-[node name="EffectSelectorRightClick" type="PopupMenu" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor"]
+[node name="EffectSelectorRightClick" type="PopupMenu" parent="MarginContainer/Editor/AudioEditor"]
 unique_name_in_owner = true
 item_count = 2
 item_0/text = "Remove:"
@@ -288,7 +233,7 @@ item_0/separator = true
 item_1/text = ""
 item_1/id = 1
 
-[node name="BusEffectSelectorRightClick" type="PopupMenu" parent="MarginContainer/HBoxContainer/Editor/AuditorEditor"]
+[node name="BusEffectSelectorRightClick" type="PopupMenu" parent="MarginContainer/Editor/AudioEditor"]
 unique_name_in_owner = true
 size = Vector2i(122, 62)
 item_count = 2
@@ -297,9 +242,13 @@ item_0/id = 0
 item_1/text = "Delete"
 item_1/id = 1
 
-[node name="MenuEditor" type="Control" parent="MarginContainer/HBoxContainer/Editor"]
+[node name="AudioLogCreator" type="Control" parent="MarginContainer/Editor"]
 unique_name_in_owner = true
 visible = false
+layout_mode = 2
+script = ExtResource("3_fa3r4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Editor/AudioLogCreator"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -307,66 +256,329 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Editor/MenuEditor"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer"]
+layout_mode = 2
+
+[node name="AudioLogList" type="ItemList" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 2
+item_0/text = "AudioLog2.tres"
+item_1/text = "example_log_1.tres"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="NewButton" type="Button" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "New"
+
+[node name="LoadButton" type="Button" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "Load"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="AudioLogName" type="LineEdit" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Log Name	"
+expand_to_text_length = true
+
+[node name="FileOpen" type="Button" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Log Audio"
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Optional Parameters"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HSeparator5" type="HSeparator" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+
+[node name="ProfilePicture" type="TextureRect" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("4_wyusm")
+
+[node name="PictureButton" type="Button" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Profile Picture"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeakerName" type="LineEdit" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer3/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Speaker Name"
+expand_to_text_length = true
+
+[node name="LogText" type="TextEdit" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer3/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Log Text"
+wrap_mode = 1
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Default Overrides"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+
+[node name="InsertEffectButton" type="Label" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "Insert Effect Override:"
+horizontal_alignment = 2
+
+[node name="InsertEffectDefaultOverrideButton" type="OptionButton" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 3
+selected = 0
+popup/item_0/text = "Default"
+popup/item_0/id = 0
+popup/item_1/text = "Insert_Effect_01_Cassette.ogg"
+popup/item_1/id = 1
+popup/item_2/text = "insert_effect_02_vinyl.ogg"
+popup/item_2/id = 2
+
+[node name="InsertPlayButton" type="Button" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="endEffectButton" type="Label" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "End Effect Override:"
+horizontal_alignment = 2
+
+[node name="EndEffectDefaultOverrideButton" type="OptionButton" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 3
+selected = 0
+popup/item_0/text = "Default"
+popup/item_0/id = 0
+popup/item_1/text = "End_Effect_01_Cassette.ogg"
+popup/item_1/id = 1
+popup/item_2/text = "end_effect_02_vinyl.ogg"
+popup/item_2/id = 2
+
+[node name="EndPlayButton" type="Button" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="BackgoundEffectButton" type="Label" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "Backgound Effect Override:"
+horizontal_alignment = 2
+
+[node name="BackgroundDefaultOverrideButton" type="OptionButton" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 3
+selected = 0
+popup/item_0/text = "Default"
+popup/item_0/id = 0
+popup/item_1/text = "BackgroundCrackle.ogg"
+popup/item_1/id = 1
+popup/item_2/text = "background_crackle_02.ogg"
+popup/item_2/id = 2
+
+[node name="BGPlayButton" type="Button" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="DefultBusButton" type="Label" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "Default Bus Override:"
+horizontal_alignment = 2
+
+[node name="BusEffectDefaultOverrideButton" type="OptionButton" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 3
+selected = 0
+popup/item_0/text = "Default"
+popup/item_0/id = 0
+popup/item_1/text = "high_pass_crunch.tres"
+popup/item_1/id = 1
+popup/item_2/text = "warm_crackle.tres"
+popup/item_2/id = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+text = "Play Preview"
+
+[node name="StopButton" type="Button" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+text = "Stop"
+
+[node name="AddAudioLog" type="FileDialog" parent="MarginContainer/Editor/AudioLogCreator"]
+unique_name_in_owner = true
+title = "Open a File"
+initial_position = 4
+size = Vector2i(392, 300)
+ok_button_text = "Open"
+file_mode = 0
+filters = PackedStringArray("*.ogg", "*.wav")
+
+[node name="AddProfilePicture" type="FileDialog" parent="MarginContainer/Editor/AudioLogCreator"]
+unique_name_in_owner = true
+title = "Open a File"
+initial_position = 4
+size = Vector2i(312, 300)
+ok_button_text = "Open"
+file_mode = 0
+filters = PackedStringArray("*.png", "*.jpg", "*.webp")
+
+[node name="OpenAudiolog" type="FileDialog" parent="MarginContainer/Editor/AudioLogCreator"]
+unique_name_in_owner = true
+title = "Open a File"
+initial_position = 4
+size = Vector2i(392, 300)
+ok_button_text = "Open"
+file_mode = 0
+filters = PackedStringArray("*.tres", "*.res")
+
+[node name="SaveAudioLog" type="FileDialog" parent="MarginContainer/Editor/AudioLogCreator"]
+unique_name_in_owner = true
+title = "New Audio Log"
+initial_position = 4
+size = Vector2i(392, 300)
+filters = PackedStringArray("*.res", "*.tres")
+
+[node name="MenuEditor" type="Control" parent="MarginContainer/Editor"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Editor/MenuEditor"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Menu Editor"
 
-[node name="InGameEditor" type="Control" parent="MarginContainer/HBoxContainer/Editor"]
+[node name="InGameEditor" type="Control" parent="MarginContainer/Editor"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Editor/InGameEditor"]
+[node name="Label" type="Label" parent="MarginContainer/Editor/InGameEditor"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "In Game Editor"
 
-[node name="AudioLogCreator" type="Control" parent="MarginContainer/HBoxContainer/Editor"]
+[node name="InsertEffect" type="AudioStreamPlayer" parent="MarginContainer/Editor"]
 unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+stream = ExtResource("3_6npkp")
+bus = &"AudioLogBackground"
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Editor/AudioLogCreator"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Audio Log Creator"
+[node name="BgSound" type="AudioStreamPlayer" parent="MarginContainer/Editor"]
+unique_name_in_owner = true
+stream = ExtResource("4_e5pkh")
+bus = &"AudioLogBackground"
 
-[connection signal="visibility_changed" from="MarginContainer/HBoxContainer/Editor/AuditorEditor" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_visibility_changed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor/Options/HBoxContainer2/New" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_new_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor/Options/HBoxContainer/Add" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_add_pressed"]
-[connection signal="item_activated" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor/AudioSelectors/EffectSelector" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_effect_selector_item_activated"]
-[connection signal="item_clicked" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor/AudioSelectors/EffectSelector" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_effect_selector_item_clicked"]
-[connection signal="item_selected" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor/AudioSelectors/EffectSelector" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_effect_selector_item_selected"]
-[connection signal="item_clicked" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor/AudioSelectors/EffectStack" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_effect_stack_item_clicked"]
-[connection signal="item_selected" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/BussEffectEditor/AudioSelectors/EffectStack" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_effect_stack_item_selected"]
-[connection signal="item_selected" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer/InsertEffectOptionButton" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_insert_effect_option_button_item_selected"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer/InsertPlayButton" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_insert_play_button_pressed"]
-[connection signal="item_selected" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer/EndEffectOptionButton" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_end_effect_option_button_item_selected"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer/EndPlayButton" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_end_play_button_pressed"]
-[connection signal="item_selected" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer/BackgroundOptionButton" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_background_option_button_item_selected"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer/BGPlayButton" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_bg_play_button_pressed"]
-[connection signal="item_selected" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/AudioLogGlobals/GridContainer/BusEffectOptionButton" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_bus_effect_option_button_item_selected"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/Preview/StopButton" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_stop_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/Preview/PlayTrack" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_play_track_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/VBoxContainer/Preview/LoadTrack" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_load_track_pressed"]
-[connection signal="finished" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/EndEffect" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_end_effect_finished"]
-[connection signal="finished" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/PreviewPlayer" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_preview_player_finished"]
-[connection signal="file_selected" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/LoadTrackFileDialog" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_load_track_file_dialog_file_selected"]
-[connection signal="file_selected" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/NewStackEffectDialog" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_new_stack_effect_dialog_file_selected"]
-[connection signal="index_pressed" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/AudioEffectSelector" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_audio_effect_selector_index_pressed"]
-[connection signal="index_pressed" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/EffectSelectorRightClick" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_effect_selector_right_click_index_pressed"]
-[connection signal="index_pressed" from="MarginContainer/HBoxContainer/Editor/AuditorEditor/BusEffectSelectorRightClick" to="MarginContainer/HBoxContainer/Editor/AuditorEditor" method="_on_bus_effect_selector_right_click_index_pressed"]
+[node name="EndEffect" type="AudioStreamPlayer" parent="MarginContainer/Editor"]
+unique_name_in_owner = true
+stream = ExtResource("5_r8rs2")
+bus = &"AudioLogBackground"
+
+[node name="PreviewPlayer" type="AudioStreamPlayer" parent="MarginContainer/Editor"]
+unique_name_in_owner = true
+bus = &"AudioLogic"
+
+[connection signal="visibility_changed" from="MarginContainer/Editor/AudioEditor" to="MarginContainer/Editor/AudioEditor" method="_on_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor/Options/HBoxContainer2/New" to="MarginContainer/Editor/AudioEditor" method="_on_new_pressed"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor/Options/HBoxContainer/Add" to="MarginContainer/Editor/AudioEditor" method="_on_add_pressed"]
+[connection signal="item_activated" from="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor/AudioSelectors/EffectSelector" to="MarginContainer/Editor/AudioEditor" method="_on_effect_selector_item_activated"]
+[connection signal="item_clicked" from="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor/AudioSelectors/EffectSelector" to="MarginContainer/Editor/AudioEditor" method="_on_effect_selector_item_clicked"]
+[connection signal="item_selected" from="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor/AudioSelectors/EffectSelector" to="MarginContainer/Editor/AudioEditor" method="_on_effect_selector_item_selected"]
+[connection signal="item_clicked" from="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor/AudioSelectors/EffectStack" to="MarginContainer/Editor/AudioEditor" method="_on_effect_stack_item_clicked"]
+[connection signal="item_selected" from="MarginContainer/Editor/AudioEditor/VBoxContainer/BussEffectEditor/AudioSelectors/EffectStack" to="MarginContainer/Editor/AudioEditor" method="_on_effect_stack_item_selected"]
+[connection signal="item_selected" from="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer/InsertEffectOptionButton" to="MarginContainer/Editor/AudioEditor" method="_on_insert_effect_option_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer/InsertPlayButton" to="MarginContainer/Editor/AudioEditor" method="_on_insert_play_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer/EndEffectOptionButton" to="MarginContainer/Editor/AudioEditor" method="_on_end_effect_option_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer/EndPlayButton" to="MarginContainer/Editor/AudioEditor" method="_on_end_play_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer/BackgroundOptionButton" to="MarginContainer/Editor/AudioEditor" method="_on_background_option_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer/BGPlayButton" to="MarginContainer/Editor/AudioEditor" method="_on_bg_play_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/Editor/AudioEditor/VBoxContainer/AudioLogGlobals/GridContainer/BusEffectOptionButton" to="MarginContainer/Editor/AudioEditor" method="_on_bus_effect_option_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioEditor/VBoxContainer/Preview/StopButton" to="MarginContainer/Editor/AudioEditor" method="_on_stop_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioEditor/VBoxContainer/Preview/PlayTrack" to="MarginContainer/Editor/AudioEditor" method="_on_play_track_pressed"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioEditor/VBoxContainer/Preview/LoadTrack" to="MarginContainer/Editor/AudioEditor" method="_on_load_track_pressed"]
+[connection signal="file_selected" from="MarginContainer/Editor/AudioEditor/LoadTrackFileDialog" to="MarginContainer/Editor/AudioEditor" method="_on_load_track_file_dialog_file_selected"]
+[connection signal="file_selected" from="MarginContainer/Editor/AudioEditor/NewStackEffectDialog" to="MarginContainer/Editor/AudioEditor" method="_on_new_stack_effect_dialog_file_selected"]
+[connection signal="index_pressed" from="MarginContainer/Editor/AudioEditor/AudioEffectSelector" to="MarginContainer/Editor/AudioEditor" method="_on_audio_effect_selector_index_pressed"]
+[connection signal="index_pressed" from="MarginContainer/Editor/AudioEditor/EffectSelectorRightClick" to="MarginContainer/Editor/AudioEditor" method="_on_effect_selector_right_click_index_pressed"]
+[connection signal="index_pressed" from="MarginContainer/Editor/AudioEditor/BusEffectSelectorRightClick" to="MarginContainer/Editor/AudioEditor" method="_on_bus_effect_selector_right_click_index_pressed"]
+[connection signal="visibility_changed" from="MarginContainer/Editor/AudioLogCreator" to="MarginContainer/Editor/AudioLogCreator" method="_on_visibility_changed"]
+[connection signal="item_activated" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer/AudioLogList" to="MarginContainer/Editor/AudioLogCreator" method="_on_audio_log_list_item_activated"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer2/NewButton" to="MarginContainer/Editor/AudioLogCreator" method="_on_new_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer2/LoadButton" to="MarginContainer/Editor/AudioLogCreator" method="_on_load_button_pressed"]
+[connection signal="text_changed" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer/AudioLogName" to="MarginContainer/Editor/AudioLogCreator" method="_on_audio_log_name_text_changed"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer/FileOpen" to="MarginContainer/Editor/AudioLogCreator" method="_on_file_open_pressed"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer3/VBoxContainer/PictureButton" to="MarginContainer/Editor/AudioLogCreator" method="_on_picture_button_pressed"]
+[connection signal="text_changed" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer3/VBoxContainer2/SpeakerName" to="MarginContainer/Editor/AudioLogCreator" method="_on_line_edit_text_changed"]
+[connection signal="text_changed" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer3/VBoxContainer2/LogText" to="MarginContainer/Editor/AudioLogCreator" method="_on_text_edit_text_changed"]
+[connection signal="item_selected" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer/InsertEffectDefaultOverrideButton" to="MarginContainer/Editor/AudioLogCreator" method="_on_insert_effect_default_override_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer/InsertPlayButton" to="MarginContainer/Editor/AudioLogCreator" method="_on_insert_play_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer/EndEffectDefaultOverrideButton" to="MarginContainer/Editor/AudioLogCreator" method="_on_end_effect_default_override_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer/EndPlayButton" to="MarginContainer/Editor/AudioLogCreator" method="_on_end_play_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer/BackgroundDefaultOverrideButton" to="MarginContainer/Editor/AudioLogCreator" method="_on_background_default_override_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer/BGPlayButton" to="MarginContainer/Editor/AudioLogCreator" method="_on_bg_play_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer/BusEffectDefaultOverrideButton" to="MarginContainer/Editor/AudioLogCreator" method="_on_bus_effect_default_override_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer4/PlayButton" to="MarginContainer/Editor/AudioLogCreator" method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer4/StopButton" to="MarginContainer/Editor/AudioLogCreator" method="_on_stop_button_pressed"]
+[connection signal="file_selected" from="MarginContainer/Editor/AudioLogCreator/AddAudioLog" to="MarginContainer/Editor/AudioLogCreator" method="_on_add_audio_log_file_selected"]
+[connection signal="file_selected" from="MarginContainer/Editor/AudioLogCreator/AddProfilePicture" to="MarginContainer/Editor/AudioLogCreator" method="_on_add_profile_picture_file_selected"]
+[connection signal="file_selected" from="MarginContainer/Editor/AudioLogCreator/OpenAudiolog" to="MarginContainer/Editor/AudioLogCreator" method="_on_open_audiolog_file_selected"]
+[connection signal="file_selected" from="MarginContainer/Editor/AudioLogCreator/SaveAudioLog" to="MarginContainer/Editor/AudioLogCreator" method="_on_save_audio_log_file_selected"]
+[connection signal="finished" from="MarginContainer/Editor/EndEffect" to="MarginContainer/Editor/AudioEditor" method="_on_end_effect_finished"]
+[connection signal="finished" from="MarginContainer/Editor/EndEffect" to="MarginContainer/Editor/AudioLogCreator" method="_on_end_effect_finished"]
+[connection signal="finished" from="MarginContainer/Editor/PreviewPlayer" to="MarginContainer/Editor/AudioEditor" method="_on_preview_player_finished"]
+[connection signal="finished" from="MarginContainer/Editor/PreviewPlayer" to="MarginContainer/Editor/AudioLogCreator" method="_on_preview_player_finished"]
