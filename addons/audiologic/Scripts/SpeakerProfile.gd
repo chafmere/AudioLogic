@@ -10,6 +10,10 @@ var spectrum_analyser: AudioEffectInstance
 var wave_progress: float = .5
 var wave_speed : float = 3
 
+func _ready() -> void:
+	AudioLogController.log_started.connect(show_player)
+	AudioLogController.log_ended.connect(hide_player)
+
 func show_player(_log: AudioLog) -> void:
 	wave_progress = wave.get_material().get_shader_parameter("progress")
 	

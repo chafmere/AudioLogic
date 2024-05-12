@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dhfrpx7t8sdla"]
+[gd_scene load_steps=17 format=3 uid="uid://dhfrpx7t8sdla"]
 
 [ext_resource type="Script" path="res://addons/audiologic/Scripts/AudioLogController.gd" id="1_y768v"]
 [ext_resource type="AudioStream" uid="uid://bgqgyy13usoif" path="res://addons/audiologic/AudioEffects/insert_effects/Insert_Effect_01_Cassette.ogg" id="3_0dtqx"]
@@ -6,11 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://doxhf6n66yt4x" path="res://addons/audiologic/AudioEffects/end_effects/End_Effect_01_Cassette.ogg" id="5_gwspe"]
 [ext_resource type="Script" path="res://addons/audiologic/Scripts/LogCollectedNotifier.gd" id="6_3we26"]
 [ext_resource type="Script" path="res://addons/audiologic/Scripts/NotifyPanel.gd" id="7_bgff8"]
+[ext_resource type="Script" path="res://addons/audiologic/Scripts/InGameMenu.gd" id="8_gkniv"]
 [ext_resource type="FontFile" uid="uid://uqg4bbsuwkyi" path="res://addons/audiologic/Fonts/uni-sans/ubuntu/ubuntu-font-family-0.80/Ubuntu-B.ttf" id="8_t4qnw"]
 [ext_resource type="Script" path="res://addons/audiologic/Scripts/InGamePlayer.gd" id="9_k3d4k"]
-[ext_resource type="Script" path="res://addons/audiologic/Scripts/SpeakerProfile.gd" id="10_tpm1l"]
-[ext_resource type="Texture2D" uid="uid://cfiidxupijtb8" path="res://addons/audiologic/ProfilePictures/PlaceHolder_size3_transparent.png" id="11_xblge"]
-[ext_resource type="Shader" path="res://addons/audiologic/AudioLogController/WaveFormShader.gdshader" id="12_5pcda"]
 
 [sub_resource type="Gradient" id="Gradient_cr5as"]
 offsets = PackedFloat32Array(0.0961538, 0.996795)
@@ -115,129 +113,6 @@ _data = {
 "notify_end": SubResource("Animation_n6ejn")
 }
 
-[sub_resource type="Gradient" id="Gradient_hsydf"]
-offsets = PackedFloat32Array(0.0727848, 1)
-colors = PackedColorArray(0, 0, 0, 0.741176, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2vwet"]
-gradient = SubResource("Gradient_hsydf")
-fill_from = Vector2(1, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t77og"]
-texture = SubResource("GradientTexture2D_2vwet")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrbc5"]
-resource_local_to_scene = true
-shader = ExtResource("12_5pcda")
-shader_parameter/lines = 80
-shader_parameter/amplitude = 1.0
-shader_parameter/frequency = 0.1
-shader_parameter/intensity = 0.75
-shader_parameter/line_sharpness = 0.301
-shader_parameter/line_size = 0.8
-shader_parameter/fade = 0.1
-shader_parameter/rest_size = 9.5e-08
-shader_parameter/edge = 0.121
-shader_parameter/speed = 0.5
-shader_parameter/color = Color(0.709804, 0.737255, 1, 1)
-shader_parameter/dot_matrix = false
-shader_parameter/dot_matriz_size = 80
-shader_parameter/speech_sim = false
-shader_parameter/speech_intensity = 0.8
-shader_parameter/progress = 0.504
-
-[sub_resource type="Animation" id="Animation_2ea1x"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-94, -71)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_582qj"]
-resource_name = "playing_end"
-length = 0.1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.09),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-94, -71), Vector2(50, -71)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.09),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_ucrbu"]
-resource_name = "playing_start"
-length = 0.1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(50, -71), Vector2(-94, -71)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.01),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tm55v"]
-_data = {
-"RESET": SubResource("Animation_2ea1x"),
-"playing_end": SubResource("Animation_582qj"),
-"playing_start": SubResource("Animation_ucrbu")
-}
-
 [node name="AudioLogController" type="Control"]
 process_mode = 3
 layout_mode = 3
@@ -323,63 +198,25 @@ one_shot = true
 
 [node name="InGamePlayer" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 1.0
-anchor_top = 0.3
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.3
-offset_left = -40.0
-offset_top = -20.0
-offset_bottom = 20.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_k3d4k")
 
-[node name="SpeakerProfile" type="MarginContainer" parent="InGamePlayer"]
+[node name="InGameMenu" type="Control" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -94.0
-offset_top = -71.0
-offset_right = 40.0
-offset_bottom = 140.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_right = 20
-script = ExtResource("10_tpm1l")
+script = ExtResource("8_gkniv")
 
-[node name="BackgroundPanel" type="Panel" parent="InGamePlayer/SpeakerProfile"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_t77og")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="InGamePlayer/SpeakerProfile"]
-layout_mode = 2
-
-[node name="ProfilePicture" type="TextureRect" parent="InGamePlayer/SpeakerProfile/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("11_xblge")
-expand_mode = 5
-
-[node name="NameLabel" type="Label" parent="InGamePlayer/SpeakerProfile/VBoxContainer"]
-layout_mode = 2
-text = "Speaker Name"
-horizontal_alignment = 1
-
-[node name="Wave" type="ColorRect" parent="InGamePlayer/SpeakerProfile/VBoxContainer"]
-material = SubResource("ShaderMaterial_jrbc5")
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InGamePlayer/SpeakerProfile"]
-libraries = {
-"": SubResource("AnimationLibrary_tm55v")
-}
-
-[connection signal="log_ended" from="." to="InGamePlayer" method="_on_audio_log_controller_log_ended"]
-[connection signal="log_started" from="." to="InGamePlayer" method="_on_audio_log_controller_log_started"]
+[connection signal="hide_in_game_menu" from="." to="InGameMenu" method="on_game_menu_hide"]
+[connection signal="show_in_game_menu" from="." to="InGameMenu" method="on_game_menu_show"]
 [connection signal="play_log" from="LogCollectedNotifier" to="." method="_on_log_collected_notifier_play_log"]
 [connection signal="timeout" from="LogCollectedNotifier/WaitTimer" to="LogCollectedNotifier" method="_on_wait_timer_timeout"]
 [connection signal="timeout" from="LogCollectedNotifier/TimeOutTimer" to="LogCollectedNotifier" method="_on_time_out_timer_timeout"]

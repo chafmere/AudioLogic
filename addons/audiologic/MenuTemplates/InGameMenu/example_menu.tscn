@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://p7i1o7mg8ojk"]
+[gd_scene load_steps=6 format=3 uid="uid://p7i1o7mg8ojk"]
 
-[ext_resource type="Script" path="res://addons/audiologic/Scripts/example_menu.gd" id="1_htyqv"]
 [ext_resource type="Texture2D" uid="uid://cfiidxupijtb8" path="res://addons/audiologic/ProfilePictures/PlaceHolder_size3_transparent.png" id="1_immih"]
-[ext_resource type="Shader" path="res://addons/audiologic/AudioLogController/WaveFormShader.gdshader" id="2_hkcyl"]
+[ext_resource type="Theme" uid="uid://bvgy04f6861yd" path="res://addons/audiologic/themes/high_contrast.tres" id="1_qkxdw"]
+[ext_resource type="Script" path="res://addons/audiologic/Scripts/menu_scripts/example_menu.gd" id="2_ndtt1"]
+[ext_resource type="Shader" path="res://addons/audiologic/MenuTemplates/WaveFormShader.gdshader" id="3_dfljk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_30fdb"]
-shader = ExtResource("2_hkcyl")
+shader = ExtResource("3_dfljk")
 shader_parameter/lines = 320
 shader_parameter/amplitude = 0.9
 shader_parameter/frequency = 0.1
@@ -31,9 +32,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_htyqv")
+theme = ExtResource("1_qkxdw")
+script = ExtResource("2_ndtt1")
 
-[node name="Panel" type="Panel" parent="." groups=["ApplyTheme"]]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,7 +43,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="." groups=["ApplyTheme"]]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,7 +58,7 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer" groups=["ApplyTheme"]]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
@@ -68,11 +70,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = -1
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer" groups=["ApplyTheme"]]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AudioLogSelector" type="ScrollContainer" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/PanelContainer" groups=["ApplyTheme"]]
+[node name="AudioLogSelector" type="ScrollContainer" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -82,17 +84,21 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer" groups=["ApplyTheme"]]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/AudioLogSelector/ButtonContainer"]
+layout_mode = 2
+text = "Test Button"
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Subtitles" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/PanelContainer2" groups=["ApplyTheme"]]
+[node name="Subtitles" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/PanelContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "This is a place where the subtitles will go if supplied	"
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer" groups=["ApplyTheme"]]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -107,13 +113,13 @@ layout_mode = 2
 texture = ExtResource("1_immih")
 stretch_mode = 5
 
-[node name="SpeakerName" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/PanelContainer/PortraitBox" groups=["ApplyTheme"]]
+[node name="SpeakerName" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/PanelContainer/PortraitBox"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Speaker Name"
 horizontal_alignment = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer" groups=["ApplyTheme"]]
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -126,3 +132,5 @@ unique_name_in_owner = true
 material = SubResource("ShaderMaterial_30fdb")
 layout_mode = 2
 size_flags_vertical = 3
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

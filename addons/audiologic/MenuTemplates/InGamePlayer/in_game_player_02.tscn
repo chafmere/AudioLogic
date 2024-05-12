@@ -1,0 +1,215 @@
+[gd_scene load_steps=14 format=3 uid="uid://djxc3qj5bjibf"]
+
+[ext_resource type="Script" path="res://addons/audiologic/MenuTemplates/InGamePlayer/in_game_player_02.gd" id="1_m2ubg"]
+[ext_resource type="Texture2D" uid="uid://blnk1di06ywyl" path="res://addons/audiologic/MenuTemplates/InGamePlayer/art/portrait_bg.png" id="3_h3d47"]
+[ext_resource type="Texture2D" uid="uid://w7bl3v7q0x7y" path="res://addons/audiologic/MenuTemplates/InGamePlayer/art/cassette.png" id="3_kjpr7"]
+[ext_resource type="Texture2D" uid="uid://dgjw85541uju6" path="res://addons/audiologic/MenuTemplates/InGamePlayer/art/poloroid.png" id="4_ckf8y"]
+[ext_resource type="FontFile" uid="uid://kulr5r0gvy0l" path="res://addons/audiologic/Fonts/quikhand/Quikhand.ttf" id="5_3icfj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yq8sl"]
+
+[sub_resource type="Animation" id="Animation_li1a2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_cbunn"]
+resource_name = "sprite_anim"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fr6g2"]
+_data = {
+"RESET": SubResource("Animation_li1a2"),
+"sprite_anim": SubResource("Animation_cbunn")
+}
+
+[sub_resource type="Animation" id="Animation_2ea1x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1173.92, 218.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_582qj"]
+resource_name = "playing_end"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1018, 218.5), Vector2(1200, 218.5)]
+}
+
+[sub_resource type="Animation" id="Animation_ucrbu"]
+resource_name = "playing_start"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1215.4, 218.5), Vector2(1018, 218.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tm55v"]
+_data = {
+"RESET": SubResource("Animation_2ea1x"),
+"playing_end": SubResource("Animation_582qj"),
+"playing_start": SubResource("Animation_ucrbu")
+}
+
+[node name="SpeakerProfile02" type="MarginContainer"]
+visible = false
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1173.92
+offset_top = 218.5
+offset_right = 1307.92
+offset_bottom = 405.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_right = 20
+script = ExtResource("1_m2ubg")
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yq8sl")
+
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundPanel"]
+texture_filter = 1
+position = Vector2(-2.99988, 7.5)
+scale = Vector2(1.06364, 1.04546)
+texture = ExtResource("3_kjpr7")
+centered = false
+flip_h = true
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundPanel/Sprite2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_fr6g2")
+}
+autoplay = "sprite_anim"
+
+[node name="ProfilePicture" type="TextureRect" parent="BackgroundPanel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -48.0
+offset_top = 29.0
+offset_right = 126.0
+offset_bottom = 278.0
+rotation = -0.0872665
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_h3d47")
+
+[node name="Poloroid" type="TextureRect" parent="BackgroundPanel/ProfilePicture"]
+layout_mode = 2
+offset_left = -25.0
+offset_top = -20.8333
+offset_right = 87.46
+offset_bottom = 139.951
+scale = Vector2(2, 2)
+texture = ExtResource("4_ckf8y")
+expand_mode = 5
+
+[node name="NameLabel" type="Label" parent="BackgroundPanel"]
+texture_filter = 2
+layout_mode = 2
+offset_left = -49.915
+offset_top = 156.5
+offset_right = 64.085
+offset_bottom = 179.5
+rotation = -0.0872665
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_3icfj")
+text = "Speaker Name"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tm55v")
+}

@@ -6,8 +6,6 @@ extends Control
 @onready var speaker_name: Label = %SpeakerName
 @onready var wave_form: ColorRect = %WaveForm
 
-var current_theme = preload("res://addons/audiologic/themes/high_contrast.tres")
-
 var wave_progress: float = 0
 var spectrum_analyser: AudioEffectInstance
 var wave_speed : float = 3
@@ -15,12 +13,11 @@ var buttons_array: Array[String]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	check_for_audio_logs()
-	apply_theme(current_theme)
-	
-func apply_theme(_theme: Theme) -> void:
-	for n in get_tree().get_nodes_in_group("ApplyTheme"):
-		n.theme = _theme
-		
+	clear_buttons()
+
+func clear_buttons() -> void:
+	for b in button_container.get_children():
+		b.queue_free()
 
 func check_for_audio_logs() -> void:
 	clear_log_data()
@@ -33,7 +30,6 @@ func check_for_audio_logs() -> void:
 			buttons_array.append(logs)
 			new_button.text = logs
 			new_button.pressed.connect(get_audio_log.bind(new_button.text))
-			new_button.theme = current_theme
 			button_container.add_child(new_button)
 
 func get_audio_log(log_name: String) -> void:
@@ -46,7 +42,7 @@ func load_log(log_to_play: AudioLog) -> void:
 	subtitles.add_text(log_to_play.log_text)
 	portrait.set_texture(log_to_play.log_portrait)
 	speaker_name.set_text(log_to_play.speaker_name)
-	AudioLogController.play_log_in_menu(log_to_play)
+	AudioLogController.play_log_in_game(log_to_play)
 	add_sprectrum_analyser()
 	
 func add_sprectrum_analyser() -> void:
@@ -66,3 +62,6 @@ func clear_log_data() -> void:
 	subtitles.text = ""
 	portrait.set_texture(null)
 	speaker_name.set_text("")
+
+func _on_visibility_changed() -> void:
+	check_for_audio_logs()

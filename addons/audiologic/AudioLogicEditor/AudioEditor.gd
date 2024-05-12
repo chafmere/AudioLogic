@@ -103,7 +103,7 @@ func load_sound_effect_pools() -> void:
 			
 			if GLOBAL_AUDIOLOG_SOUNDS.background_audio_stream.resource_path == (background_sound_effect_path+sounds):
 				var index = insert_effect_option_button.get_item_index(id)
-				end_effect_option_button.select(index)
+				background_option_button.select(index)
 				
 			id += 1
 			
@@ -148,7 +148,6 @@ func _on_effect_selector_item_activated(index: int) -> void:
 	var bus_effect_profile = ResourceLoader.load(bus_effect_path+effect_to_load)
 	active_bus_effect = bus_effect_profile
 	display_effect_stack(bus_effect_profile)
-#	set_audio_log_effect(bus_effect_profile)
 	
 func display_effect_stack(_bus_effect: BusEffectProfile) -> void:
 	effect_stack.clear()
@@ -178,7 +177,6 @@ func _on_effect_stack_item_selected(index: int) -> void:
 	for e in active_bus_effect.bus_effects:
 		if e.get_class() == effect_to_preview:
 			EditorInterface.inspect_object(e)
-		#	var editor = EditorInspectorPlugin.new()
 			
 func _on_load_track_pressed() -> void:
 	load_track_file_dialog.popup()

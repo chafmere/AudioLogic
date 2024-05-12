@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MenuList" load_steps=2 format=3 uid="uid://dsd6wxyyu7qcj"]
+
+[ext_resource type="Script" path="res://addons/audiologic/AudioLogicEditor/menu_list.gd" id="1_igyd5"]
+
+[resource]
+script = ExtResource("1_igyd5")
+menu_list = {
+"example_menu.tscn": "res://addons/audiologic/MenuTemplates/InGameMenu/example_menu.tscn",
+"example_menu_2.tscn": "res://addons/audiologic/MenuTemplates/InGameMenu/example_menu_2.tscn"
+}
+in_game_list = {
+"in_game_player_01.tscn": "res://addons/audiologic/MenuTemplates/InGamePlayer/in_game_player_01.tscn",
+"in_game_player_02.tscn": "res://addons/audiologic/MenuTemplates/InGamePlayer/in_game_player_02.tscn"
+}

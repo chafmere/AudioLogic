@@ -3,6 +3,7 @@ class_name AudioLogManager
 
 const AUDIO_LOG_BUS_LAYOUT = preload("res://addons/audiologic/AudioLogController/audio_log_bus_layout.tres")
 const GLOBAL_AUDIOLOG_SOUNDS = preload("res://addons/audiologic/AudioLogController/global_audiolog_sounds.tres")
+const MENU_DEFAULTS = preload("res://addons/audiologic/AudioLogController/menu_defaults.tres")
 
 @onready var audio_log_player: AudioStreamPlayer = $AudioNodes/AudioLogPlayer
 @onready var insert_effect: AudioStreamPlayer = $AudioNodes/InsertEffect
@@ -19,6 +20,8 @@ var using_in_game_player: bool = false
 signal new_log
 signal log_started(_log: AudioLog)
 signal log_ended
+signal show_in_game_menu
+signal hide_in_game_menu
 
 func _ready() -> void:
 	init_bus_layout()
@@ -59,14 +62,18 @@ func play_log_in_game(_log: AudioLog) -> void:
 	log_started.emit(_log)
 	using_in_game_player = true
 	insert_effect.play()
-	await  insert_effect.finished
+	
+	var wait_time = (insert_effect.get_stream().get_length())*.98
+	await get_tree().create_timer(wait_time).timeout
+	
 	audio_log_player.play()
 	background_effect.play()
 
 func play_log_in_menu(_log: AudioLog) -> void:
 	allocate_log_sounds(_log)
 	insert_effect.play()
-	await  insert_effect.finished
+	var wait_time = (insert_effect.get_stream().get_length())*.98
+	await get_tree().create_timer(wait_time).timeout
 	audio_log_player.play()
 	background_effect.play()
 
@@ -100,3 +107,9 @@ func allocate_log_sounds(_log: AudioLog) -> void:
 	
 	if _log.log_audio:
 		audio_log_player.stream  = _log.log_audio
+
+func show_menu(make_visible: bool) -> void:
+	if make_visible:
+		show_in_game_menu.emit()
+	else:
+		hide_in_game_menu.emit()
