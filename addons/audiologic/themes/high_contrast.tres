@@ -1,6 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bvgy04f6861yd"]
-
-[ext_resource type="FontFile" uid="uid://uqg4bbsuwkyi" path="res://addons/audiologic/Fonts/uni-sans/ubuntu/ubuntu-font-family-0.80/Ubuntu-B.ttf" id="1_54vrm"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bvgy04f6861yd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8y7j"]
 bg_color = Color(0.615686, 0.615686, 0.615686, 1)
@@ -57,7 +55,6 @@ border_width_bottom = 10
 border_color = Color(1, 1, 1, 1)
 
 [resource]
-default_font = ExtResource("1_54vrm")
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_disabled_color = Color(0, 0, 0, 0.501961)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)

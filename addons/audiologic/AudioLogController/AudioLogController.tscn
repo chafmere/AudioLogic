@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://addons/audiologic/Scripts/NotifyPanel.gd" id="7_bgff8"]
 [ext_resource type="Script" path="res://addons/audiologic/Scripts/InGameMenu.gd" id="8_gkniv"]
 [ext_resource type="FontFile" uid="uid://uqg4bbsuwkyi" path="res://addons/audiologic/Fonts/uni-sans/ubuntu/ubuntu-font-family-0.80/Ubuntu-B.ttf" id="8_t4qnw"]
-[ext_resource type="Script" path="res://addons/audiologic/Scripts/InGamePlayer.gd" id="9_k3d4k"]
+[ext_resource type="Script" path="res://addons/audiologic/Scripts/menu_scripts/InGamePlayer.gd" id="9_k3d4k"]
 
 [sub_resource type="Gradient" id="Gradient_cr5as"]
 offsets = PackedFloat32Array(0.0961538, 0.996795)

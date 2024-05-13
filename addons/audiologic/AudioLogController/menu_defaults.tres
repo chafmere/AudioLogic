@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="MenuOptions" load_steps=4 format=3 uid="uid://d3earcmakvsus"]
 
 [ext_resource type="Script" path="res://addons/audiologic/Scripts/menu_options.gd" id="1_4jj3o"]
-[ext_resource type="PackedScene" uid="uid://or7l751o36ny" path="res://addons/audiologic/MenuTemplates/InGameMenu/example_menu_2.tscn" id="1_ia1jb"]
-[ext_resource type="PackedScene" uid="uid://djxc3qj5bjibf" path="res://addons/audiologic/MenuTemplates/InGamePlayer/in_game_player_02.tscn" id="2_qjc4a"]
+[ext_resource type="PackedScene" uid="uid://p7i1o7mg8ojk" path="res://addons/audiologic/MenuTemplates/InGameMenu/example_menu.tscn" id="1_daw3o"]
+[ext_resource type="PackedScene" uid="uid://b234hr83rowt8" path="res://addons/audiologic/MenuTemplates/InGamePlayer/in_game_player_01.tscn" id="2_pqeqw"]
 
 [resource]
 script = ExtResource("1_4jj3o")
-in_game_player = ExtResource("2_qjc4a")
-in_game_menu = ExtResource("1_ia1jb")
+in_game_player = ExtResource("2_pqeqw")
+in_game_menu = ExtResource("1_daw3o")

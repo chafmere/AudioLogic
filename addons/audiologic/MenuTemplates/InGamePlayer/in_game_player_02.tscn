@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://djxc3qj5bjibf"]
 
-[ext_resource type="Script" path="res://addons/audiologic/MenuTemplates/InGamePlayer/in_game_player_02.gd" id="1_m2ubg"]
+[ext_resource type="Script" path="res://addons/audiologic/Scripts/menu_scripts/in_game_player_02.gd" id="1_m2ubg"]
 [ext_resource type="Texture2D" uid="uid://blnk1di06ywyl" path="res://addons/audiologic/MenuTemplates/InGamePlayer/art/portrait_bg.png" id="3_h3d47"]
 [ext_resource type="Texture2D" uid="uid://w7bl3v7q0x7y" path="res://addons/audiologic/MenuTemplates/InGamePlayer/art/cassette.png" id="3_kjpr7"]
 [ext_resource type="Texture2D" uid="uid://dgjw85541uju6" path="res://addons/audiologic/MenuTemplates/InGamePlayer/art/poloroid.png" id="4_ckf8y"]

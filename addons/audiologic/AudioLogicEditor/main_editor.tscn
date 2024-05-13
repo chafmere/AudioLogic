@@ -1,14 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://wo213npgovex"]
+[gd_scene load_steps=7 format=3 uid="uid://wo213npgovex"]
 
 [ext_resource type="Script" path="res://addons/audiologic/AudioLogicEditor/main_editor.gd" id="1_ald6r"]
 [ext_resource type="Script" path="res://addons/audiologic/AudioLogicEditor/AudioEditor.gd" id="2_ruqbs"]
 [ext_resource type="Script" path="res://addons/audiologic/AudioLogicEditor/AudioLogCreator.gd" id="3_fa3r4"]
 [ext_resource type="Texture2D" uid="uid://cfiidxupijtb8" path="res://addons/audiologic/ProfilePictures/PlaceHolder_size3_transparent.png" id="4_wyusm"]
-[ext_resource type="AudioStream" path="res://addons/audiologic/AudioEffects/insert_effects/Cassette_On_01.ogg" id="5_1551i"]
 [ext_resource type="Script" path="res://addons/audiologic/AudioLogicEditor/MenuEditor.gd" id="5_wci63"]
-[ext_resource type="AudioStream" path="res://addons/audiologic/AudioEffects/background/Cassette_background_01.ogg" id="6_dnv0j"]
 [ext_resource type="Script" path="res://addons/audiologic/AudioLogicEditor/InGameEditor.gd" id="6_lpr3b"]
-[ext_resource type="AudioStream" path="res://addons/audiologic/AudioEffects/end_effects/Cassette_off_06.ogg" id="7_gtvia"]
 
 [node name="MainEditor" type="Control"]
 layout_mode = 3
@@ -163,24 +160,14 @@ horizontal_alignment = 2
 [node name="InsertEffectDefaultOverrideButton" type="OptionButton" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 8
+item_count = 3
 selected = 0
 popup/item_0/text = "Default"
 popup/item_0/id = 0
-popup/item_1/text = "Cassette_On_01.ogg"
+popup/item_1/text = "Insert_Effect_01_Cassette.ogg"
 popup/item_1/id = 1
-popup/item_2/text = "Cassette_On_02.ogg"
+popup/item_2/text = "insert_effect_02_vinyl.ogg"
 popup/item_2/id = 2
-popup/item_3/text = "Cassette_On_03.ogg"
-popup/item_3/id = 3
-popup/item_4/text = "Cassette_On_04.ogg"
-popup/item_4/id = 4
-popup/item_5/text = "Cassette_on_05.ogg"
-popup/item_5/id = 5
-popup/item_6/text = "Insert_Effect_01_Cassette.ogg"
-popup/item_6/id = 6
-popup/item_7/text = "insert_effect_02_vinyl.ogg"
-popup/item_7/id = 7
 
 [node name="InsertPlayButton" type="Button" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
@@ -194,22 +181,14 @@ horizontal_alignment = 2
 [node name="EndEffectDefaultOverrideButton" type="OptionButton" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 7
+item_count = 3
 selected = 0
 popup/item_0/text = "Default"
 popup/item_0/id = 0
-popup/item_1/text = "Cassette_Off_02.ogg"
+popup/item_1/text = "End_Effect_01_Cassette.ogg"
 popup/item_1/id = 1
-popup/item_2/text = "Cassette_Off_03.ogg"
+popup/item_2/text = "end_effect_02_vinyl.ogg"
 popup/item_2/id = 2
-popup/item_3/text = "Cassette_Off_05.ogg"
-popup/item_3/id = 3
-popup/item_4/text = "Cassette_off_06.ogg"
-popup/item_4/id = 4
-popup/item_5/text = "End_Effect_01_Cassette.ogg"
-popup/item_5/id = 5
-popup/item_6/text = "end_effect_02_vinyl.ogg"
-popup/item_6/id = 6
 
 [node name="EndPlayButton" type="Button" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
@@ -223,30 +202,14 @@ horizontal_alignment = 2
 [node name="BackgroundDefaultOverrideButton" type="OptionButton" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 11
+item_count = 3
 selected = 0
 popup/item_0/text = "Default"
 popup/item_0/id = 0
 popup/item_1/text = "BackgroundCrackle.ogg"
 popup/item_1/id = 1
-popup/item_2/text = "Cassette_background_01.ogg"
+popup/item_2/text = "background_crackle_02.ogg"
 popup/item_2/id = 2
-popup/item_3/text = "Cassette_background_02.ogg"
-popup/item_3/id = 3
-popup/item_4/text = "Cassette_background_03.ogg"
-popup/item_4/id = 4
-popup/item_5/text = "Cassette_background_04.ogg"
-popup/item_5/id = 5
-popup/item_6/text = "Cassette_background_05.ogg"
-popup/item_6/id = 6
-popup/item_7/text = "Cassette_background_06.ogg"
-popup/item_7/id = 7
-popup/item_8/text = "Cassette_fastforward_01.ogg"
-popup/item_8/id = 8
-popup/item_9/text = "Cassette_fastforward_02.ogg"
-popup/item_9/id = 9
-popup/item_10/text = "background_crackle_02.ogg"
-popup/item_10/id = 10
 
 [node name="BGPlayButton" type="Button" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
@@ -652,17 +615,14 @@ filters = PackedStringArray("*.tscn")
 
 [node name="InsertEffect" type="AudioStreamPlayer" parent="MarginContainer/Editor"]
 unique_name_in_owner = true
-stream = ExtResource("5_1551i")
 bus = &"AudioLogBackground"
 
 [node name="BgSound" type="AudioStreamPlayer" parent="MarginContainer/Editor"]
 unique_name_in_owner = true
-stream = ExtResource("6_dnv0j")
 bus = &"AudioLogBackground"
 
 [node name="EndEffect" type="AudioStreamPlayer" parent="MarginContainer/Editor"]
 unique_name_in_owner = true
-stream = ExtResource("7_gtvia")
 bus = &"AudioLogBackground"
 
 [node name="PreviewPlayer" type="AudioStreamPlayer" parent="MarginContainer/Editor"]
@@ -722,7 +682,7 @@ bus = &"AudioLogic"
 [connection signal="pressed" from="MarginContainer/Editor/InGameEditor/VFlowContainer/AddButton" to="MarginContainer/Editor/InGameEditor" method="_on_add_button_pressed"]
 [connection signal="item_selected" from="MarginContainer/Editor/InGameEditor/VFlowContainer/GameMenuList" to="MarginContainer/Editor/InGameEditor" method="_on_menu_list_item_selected"]
 [connection signal="file_selected" from="MarginContainer/Editor/InGameEditor/AddSceneFileDialog" to="MarginContainer/Editor/InGameEditor" method="_on_add_game_scene_file_selected"]
-[connection signal="finished" from="MarginContainer/Editor/EndEffect" to="MarginContainer/Editor/AudioEditor" method="_on_end_effect_finished"]
 [connection signal="finished" from="MarginContainer/Editor/EndEffect" to="MarginContainer/Editor/AudioLogCreator" method="_on_end_effect_finished"]
-[connection signal="finished" from="MarginContainer/Editor/PreviewPlayer" to="MarginContainer/Editor/AudioEditor" method="_on_preview_player_finished"]
+[connection signal="finished" from="MarginContainer/Editor/EndEffect" to="MarginContainer/Editor/AudioEditor" method="_on_end_effect_finished"]
 [connection signal="finished" from="MarginContainer/Editor/PreviewPlayer" to="MarginContainer/Editor/AudioLogCreator" method="_on_preview_player_finished"]
+[connection signal="finished" from="MarginContainer/Editor/PreviewPlayer" to="MarginContainer/Editor/AudioEditor" method="_on_preview_player_finished"]
