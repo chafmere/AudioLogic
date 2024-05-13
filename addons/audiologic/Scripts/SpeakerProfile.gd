@@ -1,9 +1,9 @@
-extends MarginContainer
+extends Control
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var profile_picture: TextureRect = $VBoxContainer/ProfilePicture
-@onready var name_label: Label = $VBoxContainer/NameLabel
-@onready var wave: ColorRect = $VBoxContainer/Wave
+@onready var animation_player: AnimationPlayer = $SpeakerProfile/AnimationPlayer
+@onready var profile_picture: TextureRect = $SpeakerProfile/VBoxContainer/ProfilePicture
+@onready var name_label: Label = $SpeakerProfile/VBoxContainer/NameLabel
+@onready var wave: ColorRect = $SpeakerProfile/VBoxContainer/Wave
 
 
 var spectrum_analyser: AudioEffectInstance

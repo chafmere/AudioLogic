@@ -47,7 +47,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1173.92, 218.5)]
+"values": [Vector2(-20, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -88,7 +88,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.08),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1018, 218.5), Vector2(1173.92, 218.5)]
+"values": [Vector2(0, 0), Vector2(150, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ucrbu"]
@@ -98,26 +98,26 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1173.92, 218.5), Vector2(1018, 218.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.01),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(150, 0), Vector2(-20, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tm55v"]
@@ -127,46 +127,59 @@ _data = {
 "playing_start": SubResource("Animation_ucrbu")
 }
 
-[node name="SpeakerProfile" type="MarginContainer"]
-visible = false
+[node name="Control" type="Control"]
+layout_mode = 3
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 21.92
+offset_left = -114.0
 offset_top = -105.5
-offset_right = 155.92
 offset_bottom = 105.5
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_u6ovu")
+
+[node name="SpeakerProfile" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_right = 114.0
+offset_bottom = 211.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_right = 20
-script = ExtResource("1_u6ovu")
 
-[node name="BackgroundPanel" type="Panel" parent="."]
+[node name="BackgroundPanel" type="Panel" parent="SpeakerProfile"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t77og")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="SpeakerProfile"]
 layout_mode = 2
 
-[node name="ProfilePicture" type="TextureRect" parent="VBoxContainer"]
+[node name="ProfilePicture" type="TextureRect" parent="SpeakerProfile/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_ny5gh")
 expand_mode = 5
 
-[node name="NameLabel" type="Label" parent="VBoxContainer"]
+[node name="NameLabel" type="Label" parent="SpeakerProfile/VBoxContainer"]
 layout_mode = 2
 text = "Speaker Name"
 horizontal_alignment = 1
 
-[node name="Wave" type="ColorRect" parent="VBoxContainer"]
+[node name="Wave" type="ColorRect" parent="SpeakerProfile/VBoxContainer"]
 material = SubResource("ShaderMaterial_jrbc5")
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpeakerProfile"]
 libraries = {
 "": SubResource("AnimationLibrary_tm55v")
 }

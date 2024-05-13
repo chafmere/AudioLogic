@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://addons/audiologic/Scripts/menu_options.gd" id="1_4jj3o"]
 [ext_resource type="PackedScene" uid="uid://p7i1o7mg8ojk" path="res://addons/audiologic/MenuTemplates/InGameMenu/example_menu.tscn" id="1_daw3o"]
-[ext_resource type="PackedScene" uid="uid://b234hr83rowt8" path="res://addons/audiologic/MenuTemplates/InGamePlayer/in_game_player_01.tscn" id="2_pqeqw"]
+[ext_resource type="PackedScene" uid="uid://djxc3qj5bjibf" path="res://addons/audiologic/MenuTemplates/InGamePlayer/in_game_player_02.tscn" id="2_3rd5s"]
 
 [resource]
 script = ExtResource("1_4jj3o")
-in_game_player = ExtResource("2_pqeqw")
+in_game_player = ExtResource("2_3rd5s")
 in_game_menu = ExtResource("1_daw3o")
