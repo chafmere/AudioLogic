@@ -100,7 +100,6 @@ text = "This is a place where the subtitles will go if supplied	"
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="PortraitBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
@@ -108,10 +107,11 @@ size_flags_horizontal = 3
 
 [node name="Portrait" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/PanelContainer/PortraitBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 400)
+custom_minimum_size = Vector2(275, 387.5)
 layout_mode = 2
 texture = ExtResource("1_immih")
-stretch_mode = 5
+expand_mode = 4
+stretch_mode = 6
 
 [node name="SpeakerName" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/PanelContainer/PortraitBox"]
 unique_name_in_owner = true
