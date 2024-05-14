@@ -165,9 +165,11 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_t77og")
 layout_mode = 2
 
 [node name="ProfilePicture" type="TextureRect" parent="SpeakerProfile/VBoxContainer"]
+custom_minimum_size = Vector2(110, 155)
 layout_mode = 2
 texture = ExtResource("2_ny5gh")
 expand_mode = 5
+stretch_mode = 6
 
 [node name="NameLabel" type="Label" parent="SpeakerProfile/VBoxContainer"]
 layout_mode = 2

@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://djxc3qj5bjibf"]
 
 [ext_resource type="Script" path="res://addons/audiologic/Scripts/menu_scripts/in_game_player_02.gd" id="1_m2ubg"]
-[ext_resource type="Texture2D" uid="uid://blnk1di06ywyl" path="res://addons/audiologic/MenuTemplates/InGamePlayer/art/portrait_bg.png" id="3_h3d47"]
 [ext_resource type="Texture2D" uid="uid://w7bl3v7q0x7y" path="res://addons/audiologic/MenuTemplates/InGamePlayer/art/cassette.png" id="3_kjpr7"]
+[ext_resource type="Texture2D" uid="uid://cfiidxupijtb8" path="res://addons/audiologic/ProfilePictures/PlaceHolder_size3_transparent.png" id="3_rypgb"]
 [ext_resource type="Texture2D" uid="uid://dgjw85541uju6" path="res://addons/audiologic/MenuTemplates/InGamePlayer/art/poloroid.png" id="4_ckf8y"]
 [ext_resource type="FontFile" uid="uid://kulr5r0gvy0l" path="res://addons/audiologic/Fonts/quikhand/Quikhand.ttf" id="5_3icfj"]
 
@@ -197,7 +197,9 @@ offset_right = 126.0
 offset_bottom = 278.0
 rotation = -0.0872665
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_h3d47")
+texture = ExtResource("3_rypgb")
+expand_mode = 5
+stretch_mode = 6
 
 [node name="Poloroid" type="TextureRect" parent="SpeakerProfile02/BackgroundPanel/ProfilePicture"]
 layout_mode = 2

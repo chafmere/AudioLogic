@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="AudioLog" load_steps=4 format=3 uid="uid://b2pyjcm1l5iln"]
 
 [ext_resource type="Script" path="res://addons/audiologic/Scripts/AudioLog.gd" id="1_cbcpx"]
+[ext_resource type="Texture2D" uid="uid://blnk1di06ywyl" path="res://addons/audiologic/MenuTemplates/InGamePlayer/art/portrait_bg.png" id="2_70186"]
 [ext_resource type="AudioStream" uid="uid://kp0paqjnpire" path="res://addons/audiologic/Example/Example Audio/AudioLogTest1.ogg" id="4_xw05f"]
-[ext_resource type="Texture2D" uid="uid://ctto1u2d106nk" path="res://addons/audiologic/ProfilePictures/pixel_guy.png" id="5_vewxf"]
 
 [resource]
 script = ExtResource("1_cbcpx")
 log_name = "This is some text"
 log_audio = ExtResource("4_xw05f")
-log_portrait = ExtResource("5_vewxf")
+log_portrait = ExtResource("2_70186")
 speaker_name = "Chaffy"
 log_text = "This is a test	2"
