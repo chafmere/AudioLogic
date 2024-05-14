@@ -109,8 +109,11 @@ layout_mode = 2
 
 [node name="ProfilePicture" type="TextureRect" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer3/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 155)
 layout_mode = 2
 texture = ExtResource("4_wyusm")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="PictureButton" type="Button" parent="MarginContainer/Editor/AudioLogCreator/HBoxContainer/VBoxContainer2/HBoxContainer3/VBoxContainer"]
 unique_name_in_owner = true
