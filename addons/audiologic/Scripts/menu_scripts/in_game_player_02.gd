@@ -1,8 +1,8 @@
 extends MarginContainer
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var profile_picture: TextureRect = $BackgroundPanel/ProfilePicture
-@onready var name_label: Label = $BackgroundPanel/NameLabel
+@onready var profile_picture: TextureRect = %ProfilePicture
+@onready var name_label: Label = %NameLabel
 
 
 func _ready() -> void:

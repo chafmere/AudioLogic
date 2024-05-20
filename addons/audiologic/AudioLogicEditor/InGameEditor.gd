@@ -9,7 +9,7 @@ var menu_list_path: String = "res://addons/audiologic/AudioLogicEditor/menu_list
 var current_preview
 
 @onready var game_menu_list: ItemList = %GameMenuList
-@onready var player_preview: CenterContainer = %PlayerPreview
+@onready var player_preview: Control = %PlayerPreview
 @onready var add_scene_file_dialog: FileDialog = $AddSceneFileDialog
 
 
@@ -32,6 +32,7 @@ func _on_visibility_changed() -> void:
 	
 func add_game_menu_to_preview(menu_path: String) -> void:
 	var menu_to_load = load(menu_path)
+
 	if scene_to_validate(menu_path) == OK:
 		if current_preview:
 			current_preview.free()
@@ -41,6 +42,7 @@ func add_game_menu_to_preview(menu_path: String) -> void:
 		new_menu.set_owner(player_preview)
 		new_menu.visible = true
 		current_preview = new_menu
+		print(new_menu.visible)
 		MENU_DEFAULTS.in_game_player = menu_to_load
 
 func scene_to_validate(new_scene_path: String)->Error:

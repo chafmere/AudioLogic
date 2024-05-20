@@ -58,12 +58,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(200, 0)]
+"values": [Vector2(-25, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
+tracks/1/path = NodePath("..:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -80,26 +80,26 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.09),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"update": 0,
+"values": [Vector2(-25, 0), Vector2(200, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath("..:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.09),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-25, 0), Vector2(200, 0)]
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_ucrbu"]
@@ -109,26 +109,26 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.01),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(200, 0), Vector2(-25, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tm55v"]
@@ -139,6 +139,7 @@ _data = {
 }
 
 [node name="Control" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 6
 anchor_left = 1.0
@@ -152,16 +153,16 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="SpeakerProfile02" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 200.0
-offset_right = 334.0
-offset_bottom = 187.0
+offset_left = -139.0
+offset_top = -93.5
+offset_right = -5.0
+offset_bottom = 93.5
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
@@ -188,20 +189,33 @@ libraries = {
 }
 autoplay = "sprite_anim"
 
-[node name="ProfilePicture" type="TextureRect" parent="SpeakerProfile02/BackgroundPanel"]
+[node name="Profile" type="Control" parent="SpeakerProfile02/BackgroundPanel"]
 texture_filter = 1
-layout_mode = 0
+anchors_preset = 0
 offset_left = -48.0
 offset_top = 29.0
 offset_right = 126.0
 offset_bottom = 278.0
 rotation = -0.0872665
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_rypgb")
-expand_mode = 5
-stretch_mode = 6
 
-[node name="Poloroid" type="TextureRect" parent="SpeakerProfile02/BackgroundPanel/ProfilePicture"]
+[node name="ColorRect" type="ColorRect" parent="SpeakerProfile02/BackgroundPanel/Profile"]
+offset_left = 7.62012
+offset_top = 5.27295
+offset_right = 173.105
+offset_bottom = 248.563
+color = Color(1, 1, 0.929412, 1)
+
+[node name="ProfilePicture" type="TextureRect" parent="SpeakerProfile02/BackgroundPanel/Profile"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.67
+offset_top = 15.29
+offset_right = 164.63
+offset_bottom = 242.575
+texture = ExtResource("3_rypgb")
+
+[node name="Poloroid" type="TextureRect" parent="SpeakerProfile02/BackgroundPanel/Profile"]
 layout_mode = 2
 offset_left = -25.0
 offset_top = -20.8333
@@ -212,6 +226,7 @@ texture = ExtResource("4_ckf8y")
 expand_mode = 5
 
 [node name="NameLabel" type="Label" parent="SpeakerProfile02/BackgroundPanel"]
+unique_name_in_owner = true
 texture_filter = 2
 layout_mode = 2
 offset_left = -49.915
