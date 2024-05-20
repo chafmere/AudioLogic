@@ -42,7 +42,6 @@ func add_game_menu_to_preview(menu_path: String) -> void:
 		new_menu.set_owner(player_preview)
 		new_menu.visible = true
 		current_preview = new_menu
-		print(new_menu.visible)
 		MENU_DEFAULTS.in_game_player = menu_to_load
 
 func scene_to_validate(new_scene_path: String)->Error:
